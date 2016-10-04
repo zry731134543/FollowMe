@@ -1,5 +1,7 @@
 package com.winorout.followme;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -34,8 +36,28 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_follow);
+
+        //透明状态栏效果，只有5.0及以上系统才支持
+        if (Build.VERSION.SDK_INT >= 21) {
+            //获取当前界面的DecorView
+            View decorView = getWindow().getDecorView();
+            //SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN，表示全屏的意思
+            // SYSTEM_UI_FLAG_LAYOUT_STABLE，表示会让应用的主体内容占用系统状态栏的空间
+            //SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION,表示会让应用的主体内容占用系统导航栏的空间
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                    | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            //设置系统UI元素的可见性
+            decorView.setSystemUiVisibility(option);
+            //将导航栏设置成透明色
+            getWindow().setNavigationBarColor(Color.TRANSPARENT);
+            //将状态栏设置成透明色
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
+        }
+
         initView();
         initEvent();
+
         //默认初始化显示第一个Tab标签
         setSelect(0);
     }
