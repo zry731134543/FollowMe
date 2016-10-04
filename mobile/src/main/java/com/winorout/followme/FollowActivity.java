@@ -34,6 +34,7 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_follow);
+        //wanxuedong
         initView();
         initEvent();
         setSelect(0);
