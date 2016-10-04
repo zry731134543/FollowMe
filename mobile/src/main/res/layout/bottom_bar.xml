@@ -18,12 +18,14 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="2dp"
+            android:clickable="false"
             android:src="@drawable/img_sports_nomal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
+            android:clickable="false"
             android:text="益动"
             android:textColor="#33475f" />
 
@@ -42,12 +44,14 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="2dp"
+            android:clickable="false"
             android:src="@drawable/img_barrage_nomal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
+            android:clickable="false"
             android:text="弹幕"
             android:textColor="#33475f" />
 
@@ -66,12 +70,14 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_margin="2dp"
+            android:clickable="false"
             android:src="@drawable/img_personal_nomal" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
+            android:clickable="false"
             android:text="益我"
             android:textColor="#33475f" />
 

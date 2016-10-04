@@ -34,7 +34,6 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_follow);
 
         //透明状态栏效果，只有5.0及以上系统才支持
