@@ -1,14 +1,11 @@
 package com.winorout.followme;
 
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -35,7 +32,6 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
-
 
         initView();
         initEvent();
@@ -116,6 +112,7 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
 
     /**
      * 当点击Tab时，将对应的Tab图片变为亮色并显示对应的viewPager页
+     *
      * @param i 选中的Tab对应的索引
      */
     private void setSelect(int i) {
@@ -125,6 +122,7 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
 
     /**
      * 将选中的Tab对应的图片变亮
+     *
      * @param i 选中的Tab对应的索引
      */
     private void setTab(int i) {
