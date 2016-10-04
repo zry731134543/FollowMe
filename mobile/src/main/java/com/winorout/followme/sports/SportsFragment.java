@@ -13,6 +13,7 @@ import com.winorout.followme.R;
  */
 
 public class SportsFragment extends Fragment {
+    // TODO: 2016/10/4 编写运动界面实现逻辑
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {

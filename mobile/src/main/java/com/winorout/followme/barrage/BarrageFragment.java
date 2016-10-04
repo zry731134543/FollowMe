@@ -13,6 +13,7 @@ import com.winorout.followme.R;
  */
 
 public class BarrageFragment extends Fragment {
+    // TODO: 2016/10/4 编写弹幕界面实现逻辑
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {

@@ -34,9 +34,9 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_follow);
-        //wanxuedong
         initView();
         initEvent();
+        //默认初始化显示第一个Tab标签
         setSelect(0);
     }
 
@@ -52,6 +52,7 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
 
             @Override
             public void onPageSelected(int position) {
+                //当滑动到一个viewPager页时，切换到对应的Tab
                 setTab(position);
             }
 
@@ -70,6 +71,8 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         mtabBarrageImg = (ImageView) findViewById(R.id.tab_barrage_img);
         mtabPersonalImg = (ImageView) findViewById(R.id.tab_personal_img);
         mviewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        //初始化三个Tab对应的Fragment
         mfragments = new ArrayList<Fragment>();
         Fragment msportsFragment = new SportsFragment();
         Fragment mbarrageFragment = new BarrageFragment();
@@ -107,11 +110,19 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         }
     }
 
+    /**
+     * 当点击Tab时，将对应的Tab图片变为亮色并显示对应的viewPager页
+     * @param i 选中的Tab对应的索引
+     */
     private void setSelect(int i) {
         setTab(i);
         mviewPager.setCurrentItem(i);
     }
 
+    /**
+     * 将选中的Tab对应的图片变亮
+     * @param i 选中的Tab对应的索引
+     */
     private void setTab(int i) {
         resertImg();
         switch (i) {
