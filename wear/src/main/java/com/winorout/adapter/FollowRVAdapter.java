@@ -1,7 +1,7 @@
 package com.winorout.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
+import android.support.wearable.view.WearableListView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +15,7 @@ import com.winorout.followme.R;
  * Created by xwangch on 16/10/5.
  */
 
-public class FollowRVAdapter extends RecyclerView.Adapter<FollowRVAdapter.ViewHolder> {
+public class FollowRVAdapter extends WearableListView.Adapter {
 
     private Context mContext;
     private String[] item_string= {"数据", "弹幕", "防盗"};
@@ -26,14 +26,14 @@ public class FollowRVAdapter extends RecyclerView.Adapter<FollowRVAdapter.ViewHo
     }
 
     @Override
-    public FollowRVAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_follow_rv, parent, false));
+    public FollowRVAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ItemViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_follow_rv, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.itemIv.setImageResource(item_imgId[position]);
-        holder.itemTv.setText(item_string[position]);
+    public void onBindViewHolder(WearableListView.ViewHolder holder, int position) {
+        ((ItemViewHolder)holder).itemIv.setImageResource(item_imgId[position]);
+        ((ItemViewHolder)holder).itemTv.setText(item_string[position]);
     }
 
     @Override
@@ -41,13 +41,13 @@ public class FollowRVAdapter extends RecyclerView.Adapter<FollowRVAdapter.ViewHo
         return item_string.length;
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ItemViewHolder extends WearableListView.ViewHolder{
 
         ImageView itemIv;
         TextView itemTv;
         LinearLayout itemLl;
 
-        public ViewHolder(View itemView) {
+        public ItemViewHolder(View itemView) {
             super(itemView);
             itemIv = (ImageView) itemView.findViewById(R.id.item_iv);
             itemTv = (TextView) itemView.findViewById(R.id.item_tv);

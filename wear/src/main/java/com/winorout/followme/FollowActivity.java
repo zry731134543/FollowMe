@@ -1,14 +1,15 @@
 package com.winorout.followme;
 
 import android.os.Bundle;
-import android.support.wearable.view.WearableRecyclerView;
+import android.support.wearable.view.WearableListView;
 
 import com.winorout.adapter.FollowRVAdapter;
 import com.winorout.base.BaseActivity;
 
 public class FollowActivity extends BaseActivity {
 
-    private WearableRecyclerView mRecyclerView;   //主界面rv
+
+    private WearableListView mListView;    //主界面lv
 
     @Override
     public void initVariables() {
@@ -19,11 +20,11 @@ public class FollowActivity extends BaseActivity {
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_follow);
 
-        mRecyclerView = (WearableRecyclerView) findViewById(R.id.follow_rv);
+        mListView = (WearableListView) findViewById(R.id.follow_lv);
     }
 
     @Override
     public void loadData() {
-        mRecyclerView.setAdapter(new FollowRVAdapter(this));
+        mListView.setAdapter(new FollowRVAdapter(this));
     }
 }
