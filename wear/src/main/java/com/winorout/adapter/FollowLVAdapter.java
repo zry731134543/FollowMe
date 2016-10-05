@@ -9,31 +9,44 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.winorout.followme.BarrageActivity;
+import com.winorout.followme.DomStealActivity;
 import com.winorout.followme.R;
+import com.winorout.followme.SportDataActivity;
+import com.winorout.interfaces.FollowViewInterface;
 
 /**
  * Created by xwangch on 16/10/5.
  */
 
-public class FollowRVAdapter extends WearableListView.Adapter {
+public class FollowLVAdapter extends WearableListView.Adapter {
 
     private Context mContext;
+    private FollowViewInterface followInterface;
     private String[] item_string= {"数据", "弹幕", "防盗"};
     private int[] item_imgId = {R.drawable.sportdata, R.drawable.barrage, R.drawable.domsteal};
+    private Class[] intentActivity = {SportDataActivity.class, BarrageActivity.class, DomStealActivity.class};
 
-    public FollowRVAdapter(Context context){
+    public FollowLVAdapter(Context context, FollowViewInterface viewInterface){
         this.mContext = context;
+        this.followInterface = viewInterface;
     }
 
     @Override
-    public FollowRVAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FollowLVAdapter.ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ItemViewHolder(LayoutInflater.from(mContext).inflate(R.layout.item_follow_rv, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(WearableListView.ViewHolder holder, int position) {
+    public void onBindViewHolder(WearableListView.ViewHolder holder, final int position) {
         ((ItemViewHolder)holder).itemIv.setImageResource(item_imgId[position]);
         ((ItemViewHolder)holder).itemTv.setText(item_string[position]);
+        ((ItemViewHolder)holder).itemLl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                followInterface.toSportActivity(intentActivity[position]);
+            }
+        });
     }
 
     @Override

@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--数据Activity-->
+        <activity android:name=".SportDataActivity"/>
+        <!--弹幕Activity-->
+        <activity android:name=".BarrageActivity"/>
+        <!--防盗Activity-->
+        <activity android:name=".DomStealActivity"/>
     </application>
 
 </manifest>

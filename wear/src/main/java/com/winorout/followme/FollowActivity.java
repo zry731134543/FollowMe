@@ -1,12 +1,14 @@
 package com.winorout.followme;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.view.WearableListView;
 
-import com.winorout.adapter.FollowRVAdapter;
+import com.winorout.adapter.FollowLVAdapter;
 import com.winorout.base.BaseActivity;
+import com.winorout.interfaces.FollowViewInterface;
 
-public class FollowActivity extends BaseActivity {
+public class FollowActivity extends BaseActivity implements FollowViewInterface{
 
 
     private WearableListView mListView;    //主界面lv
@@ -25,6 +27,12 @@ public class FollowActivity extends BaseActivity {
 
     @Override
     public void loadData() {
-        mListView.setAdapter(new FollowRVAdapter(this));
+        mListView.setAdapter(new FollowLVAdapter(this, this));
+    }
+
+    @Override
+    public void toSportActivity(Class otherActivity) {
+        Intent intent = new Intent(this, otherActivity);
+        startActivity(intent);
     }
 }
