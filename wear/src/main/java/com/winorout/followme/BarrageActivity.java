@@ -17,6 +17,7 @@ public class BarrageActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_barrage);
+        initTopbar("弹幕");
     }
 
     @Override

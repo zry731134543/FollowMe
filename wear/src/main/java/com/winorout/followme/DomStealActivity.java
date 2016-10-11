@@ -17,6 +17,7 @@ public class DomStealActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_domsteal);
+        initTopbar("防盗");
     }
 
     @Override

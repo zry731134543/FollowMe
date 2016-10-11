@@ -17,6 +17,7 @@ public class SportDataActivity extends BaseActivity {
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sportdata);
+        initTopbar("数据");
     }
 
     @Override
