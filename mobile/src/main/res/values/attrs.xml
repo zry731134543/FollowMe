@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="TopBar">
+        <attr name="title" format="string" />
+        <attr name="titleTestSize" format="dimension" />
+        <attr name="titleTestColor" format="color" />
+        <attr name="leftText" format="string" />
+        <attr name="leftTestColor" format="color" />
+        <attr name="leftBackground" format="reference|color" />
+        <attr name="imageBackground" format="reference|color" />
+        <attr name="leftWidth" format="dimension" />
+        <attr name="leftHeight" format="dimension" />
+        <attr name="leftMargin" format="dimension" />
+        <attr name="titleLogoImageViewWidth" format="dimension" />
+        <attr name="titleLogoImageViewHeight" format="dimension" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTestColor" format="color" />
+        <attr name="rightBackground" format="reference|color" />
+        <attr name="rightWidth" format="dimension" />
+        <attr name="rightHeight" format="dimension" />
+        <attr name="rightMargin" format="dimension" />
+        <attr name="rightMarginTop" format="dimension" />
+        <attr name="rightMarginBottom" format="dimension" />
+        <attr name="rightSize" format="dimension" />
+    </declare-styleable>
+
+    <!-- 圆角图片 -->
+    <declare-styleable name="RoundImageView">
+        <attr name="borderRadius" value="0" />
+        <attr name="type" value="1" />
+    </declare-styleable>
+
+    <attr name="borderRadius" format="dimension" />
+    <attr name="type">
+        <enum name="circle" value="0" />
+        <enum name="round" value="1" />
+    </attr>
+    <!-- 圆角图片 -->
+
+    <attr name="direction">
+        <enum name="rightToLeft" value="0" />
+        <enum name="bottomToTop" value="1" />
+        <enum name="leftToRight" value="2" />
+        <enum name="topToBottom" value="3" />
+    </attr>
+
+    <declare-styleable name="MultiDirectionSlidingDrawer">
+        <attr name="handle" format="reference" />
+        <attr name="content" format="reference" />
+        <attr name="direction" />
+        <attr name="bottomOffset" format="dimension" />
+        <attr name="topOffset" format="dimension" />
+        <attr name="allowSingleTap" format="boolean" />
+        <attr name="animateOnClick" format="boolean" />
+    </declare-styleable>
+    
+    <declare-styleable name="AbstractWheelView">
+        <attr name="visibleItems" format="integer"/>
+        <attr name="isAllVisible" format="boolean"/>
+        <attr name="itemOffsetPercent" format="integer"/>
+        <attr name="itemsPadding" format="dimension"/>
+        <attr name="selectionDividerDimmedAlpha" format="integer"/>
+        <attr name="selectionDividerActiveAlpha" format="integer"/>
+        <attr name="selectionDivider" format="reference"/>
+        <attr name="itemsDimmedAlpha" format="integer"/>
+        <attr name="isCyclic" format="boolean"/>
+    </declare-styleable>
+    <declare-styleable name="WheelVerticalView">
+        <attr name="selectionDividerHeight" format="dimension"/>
+    </declare-styleable>
+    <declare-styleable name="WheelHorizontalView">
+        <attr name="selectionDividerWidth" format="dimension"/>
+    </declare-styleable>
+    <attr name="abstractWheelViewStyle" format="reference" />
+
+</resources>
