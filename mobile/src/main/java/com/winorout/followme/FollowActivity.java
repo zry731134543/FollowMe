@@ -1,6 +1,10 @@
 package com.winorout.followme;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -9,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.winorout.connect.MobileSynchroService;
 import com.winorout.followme.barrage.BarrageFragment;
 import com.winorout.followme.personalCenter.PersonalCenterFragment;
 import com.winorout.followme.sports.SportsFragment;
@@ -27,20 +32,38 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     private ImageView mtabSportsImg;
     private ImageView mtabBarrageImg;
     private ImageView mtabPersonalImg;
+    private MobileSynchroService mMobileSynchroService;
+    private ServiceConnection connection = new ServiceConnection() {
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            MobileSynchroService.MyBinder myBinder=(MobileSynchroService.MyBinder)service;
+            mMobileSynchroService=myBinder.mobileSynchroService;
+            myBinder.setActivity(FollowActivity.this);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
-
         initView();
         initEvent();
-
         //默认初始化显示第一个Tab标签
         setSelect(0);
     }
 
+    @Override
+    protected void onDestroy() {
+        unbindService(connection);
+        super.onDestroy();
+    }
+
     private void initEvent() {
+        Intent bindIntent = new Intent(this, MobileSynchroService.class);
+        bindService(bindIntent, connection, BIND_AUTO_CREATE); //  绑定服务
         mtabSports.setOnClickListener(this);
         mtabBarrage.setOnClickListener(this);
         mtabPersonal.setOnClickListener(this);
