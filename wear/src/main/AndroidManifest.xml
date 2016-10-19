@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
         <activity
-            android:name=".main.FollowActivity"
+            android:name=".FollowActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--数据Activity-->
+        <activity android:name=".SportDataActivity"/>
+        <!--弹幕Activity-->
+        <activity android:name=".BarrageActivity"/>
+        <!--防盗Activity-->
+        <activity android:name=".DomStealActivity"/>
     </application>
 
 </manifest>

@@ -4,4 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+        <android.support.wearable.view.WearableListView
+            android:id="@+id/follow_lv"
+            android:layout_width="150px"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
 </android.support.wearable.view.BoxInsetLayout>

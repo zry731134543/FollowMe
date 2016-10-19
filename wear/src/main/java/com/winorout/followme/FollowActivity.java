@@ -1,24 +1,38 @@
 package com.winorout.followme;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.wearable.view.WatchViewStub;
-import android.widget.TextView;
+import android.support.wearable.view.WearableListView;
 
-public class FollowActivity extends Activity {
+import com.winorout.adapter.FollowLVAdapter;
+import com.winorout.base.BaseActivity;
+import com.winorout.interfaces.FollowViewInterface;
 
-    private TextView mTextView;
+public class FollowActivity extends BaseActivity implements FollowViewInterface{
+
+
+    private WearableListView mListView;    //主界面lv
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initVariables() {
+
+    }
+
+    @Override
+    public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_follow);
-        final WatchViewStub stub = (WatchViewStub) findViewById(R.id.watch_view_stub);
-        stub.setOnLayoutInflatedListener(new WatchViewStub.OnLayoutInflatedListener() {
-            @Override
-            public void onLayoutInflated(WatchViewStub stub) {
-                mTextView = (TextView) stub.findViewById(R.id.text);
-            }
-        });
+
+        mListView = (WearableListView) findViewById(R.id.follow_lv);
+    }
+
+    @Override
+    public void loadData() {
+        mListView.setAdapter(new FollowLVAdapter(this, this));
+    }
+
+    @Override
+    public void toSportActivity(Class otherActivity) {
+        Intent intent = new Intent(this, otherActivity);
+        startActivity(intent);
     }
 }
