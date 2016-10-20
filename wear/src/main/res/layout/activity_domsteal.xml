@@ -22,12 +22,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/connect_phone"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30px"
-            android:textSize="40px"
-            android:text="====="/>
+        <ImageView
+            android:id="@+id/connection_iv"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_marginTop="20px"
+            android:src="@drawable/connection"
+            />
+
+
         <ImageView
             android:id="@+id/watch_iv"
             android:layout_width="wrap_content"
