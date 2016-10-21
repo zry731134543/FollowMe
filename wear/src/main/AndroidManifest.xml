@@ -28,6 +28,8 @@
         <activity android:name=".BarrageActivity"/>
         <!--防盗Activity-->
         <activity android:name=".DomStealActivity"/>
+
+        <service android:name="com.winorout.services.DomStealService"/>
     </application>
 
 </manifest>

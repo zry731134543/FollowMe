@@ -1,11 +1,11 @@
-package com.winorout.presenter;
+package com.winorout.services;
 
-import android.app.Activity;
-import android.content.Context;
+import android.app.Service;
+import android.content.Intent;
+import android.os.Binder;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
+import android.os.IBinder;
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.mobvoi.android.common.ConnectionResult;
@@ -14,59 +14,27 @@ import com.mobvoi.android.common.api.ResultCallback;
 import com.mobvoi.android.wearable.MessageApi;
 import com.mobvoi.android.wearable.MessageEvent;
 import com.mobvoi.android.wearable.Wearable;
-import com.winorout.interfaces.DomStealViewInterface;
 import com.winorout.util.VibratorUtil;
 
-import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
-
 /**
- * Created by wangchaohu on 2016/10/20.
+ * Created by wangchaohu on 2016/10/21.
  */
 
-public class DomStealPresenter implements MobvoiApiClient.ConnectionCallbacks, MobvoiApiClient.OnConnectionFailedListener, MessageApi.MessageListener {
+public class DomStealService extends Service implements MobvoiApiClient.ConnectionCallbacks, MobvoiApiClient.OnConnectionFailedListener, MessageApi.MessageListener{
 
-    private Context mContext;
-
-    private DomStealViewInterface domStealViewInterface;    //防盗界面接口
-
+    private final IBinder binder = new DomStealBinder();
     private MobvoiApiClient mobvoiApiClient;
 
     //变量以及常量
-    private long[] time = new long[]{100, 2000};   //震动时长，静止时长
+    private long[] time = new long[]{1000, 2000, 1000, 2000, 1000, 2000};   //静止时长，震动时长
     private int SUCCESS = 1, FAIL = -1;
 
-    /**
-     * Handler
-     */
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == FAIL) {
-                domStealViewInterface.disconnection();
-                VibratorUtil.Vibrate(((Activity) mContext), time, true);
-            }
-            if (msg.what == SUCCESS) {
-                domStealViewInterface.connection();
-                VibratorUtil.Vibrate(((Activity) mContext), true);
-            }
-        }
-    };
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        Log.d("wch", "onCreate");
 
-    /**
-     * 构造器
-     */
-
-
-    public DomStealPresenter(Context context, DomStealViewInterface viewInterface) {
-        this.mContext = context;
-        this.domStealViewInterface = viewInterface;
-                loading();
-    }
-
-    public void loading() {
-        mobvoiApiClient = new MobvoiApiClient.Builder(mContext)
+        mobvoiApiClient = new MobvoiApiClient.Builder(this)
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -74,6 +42,37 @@ public class DomStealPresenter implements MobvoiApiClient.ConnectionCallbacks, M
 
         mobvoiApiClient.connect();
     }
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        Log.d("wch", "onBind");
+        return binder;
+    }
+
+    @Override
+    public boolean onUnbind(Intent intent) {
+        Log.d("wch", "onUnbind");
+        return super.onUnbind(intent);
+    }
+
+    @Override
+    public void onDestroy() {
+        Log.d("wch", "onDestroy");
+        super.onDestroy();
+    }
+
+    public void excute(){
+        Log.d("wch", "excute");
+    }
+
+    public class DomStealBinder extends Binder{
+
+        public DomStealService getService(){
+            return DomStealService.this;
+        }
+    }
+
 
     @Override
     public void onConnected(Bundle bundle) {
@@ -112,10 +111,10 @@ public class DomStealPresenter implements MobvoiApiClient.ConnectionCallbacks, M
                         if (!sendMessageResult.getStatus().isSuccess()) {
                             Log.d("wch", "Failed to send message with status code: "
                                     + sendMessageResult.getStatus().getStatusCode());
-                            mHandler.sendEmptyMessage(FAIL);
+                            VibratorUtil.Vibrate(DomStealService.this, time, true);
                         } else {
                             Log.d("wch", "Success");
-                            mHandler.sendEmptyMessage(SUCCESS);
+                            VibratorUtil.Vibrate(DomStealService.this, true);
                         }
                     }
                 }

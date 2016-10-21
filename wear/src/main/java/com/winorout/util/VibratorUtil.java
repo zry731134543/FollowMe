@@ -32,4 +32,23 @@ public class VibratorUtil {
     }
 
 
+    //震动一次，milliseconds代表震动时间
+    public static void Vibrate(Service service, long milliseconds){
+        Vibrator vibrator = (Vibrator) service.getSystemService(Service.VIBRATOR_SERVICE);
+        vibrator.vibrate(milliseconds);
+    }
+
+    //isRepeat表示是否重复震动
+    public static void Vibrate(Service service, long[] pattern, boolean isRepeat){
+        Vibrator vibrator = (Vibrator) service.getSystemService(Service.VIBRATOR_SERVICE);
+        vibrator.vibrate(pattern, isRepeat ? 1 : -1);
+    }
+
+    //取消震动
+    public static void Vibrate(Service service, boolean isCancle){
+        Vibrator vibrator = (Vibrator) service.getSystemService(Service.VIBRATOR_SERVICE);
+        vibrator.cancel();
+    }
+
+
 }
