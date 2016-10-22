@@ -32,7 +32,6 @@ public class FollowActivity extends BaseActivity implements FollowViewInterface{
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_follow);
-
         mListView = (WearableListView) findViewById(R.id.follow_lv);
     }
 

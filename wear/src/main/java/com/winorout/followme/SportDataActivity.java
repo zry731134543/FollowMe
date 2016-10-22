@@ -9,9 +9,6 @@ import android.util.Log;
 
 import com.winorout.base.BaseActivity;
 
-/**
- * Created by xwangch on 16/10/5.
- */
 
 public class SportDataActivity extends BaseActivity implements SensorEventListener {
 
@@ -20,10 +17,8 @@ public class SportDataActivity extends BaseActivity implements SensorEventListen
 
     @Override
     public void initVariables() {
-        mSensorManager =
-                (SensorManager)getSystemService(SENSOR_SERVICE);
-        mStepCounter = mSensorManager.getDefaultSensor(
-                Sensor.TYPE_STEP_COUNTER);
+        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
+        mStepCounter = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
     }
 
     @Override
@@ -39,8 +34,7 @@ public class SportDataActivity extends BaseActivity implements SensorEventListen
 
     protected void onResume() {
         super.onResume();
-        mSensorManager.registerListener(this, mStepCounter,
-                SensorManager.SENSOR_DELAY_NORMAL);
+        mSensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     protected void onPause() {
@@ -52,8 +46,7 @@ public class SportDataActivity extends BaseActivity implements SensorEventListen
     }
 
     public void onSensorChanged(SensorEvent event) {
-        Log.d("Test", "Got the step count : " +
-                String.valueOf(event.values[0]));
+        Log.d("Test", "Got the step count : " +String.valueOf(event.values[0]));
     }
 
 }
