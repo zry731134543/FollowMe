@@ -1,15 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:background="#129CEE" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#129cee" >
+
+        <TextView
+            android:id="@+id/text_pedometer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="#129CEE"
+            android:gravity="center"
+            android:text="益动"
+            android:textColor="#FFF"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/circle_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:paddingTop="50dip" >
+        <com.winorout.followme.sports.CircleBar
+            android:id="@+id/circle"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:clickable="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="#fff"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingBottom="20dip"
+        android:paddingLeft="15dip"
+        android:paddingRight="15dip"
+        android:paddingTop="30dip" >
+
+        <TableLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:paddingLeft="5dip"
+            android:paddingRight="5dip" >
+
+            <TableRow
+                android:id="@+id/show_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/small_text_style"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    style="@style/small_text_style"
+                    android:layout_weight="1"
+                    android:text="里程" />
+
+                <TextView
+                    style="@style/small_text_style"
+                    android:layout_weight="1"
+                    android:text="热量" />
+
+                <TextView
+                    style="@style/small_text_style"
+                    android:layout_weight="1"
+                    android:text="时间" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:layout_weight="0.1"
+                    style="@style/small_text_style"
+                    android:text="日" />
+
+                <TextView
+                    android:id="@+id/total_kile"
+                    style="@style/small_text_style"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0m"
+                    android:textColor="#ff0000" />
+
+                <TextView
+                    android:id="@+id/total_cal"
+                    style="@style/small_text_style"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0j"
+                    android:textColor="#ff0000" />
+
+                <TextView
+                    android:id="@+id/total_time"
+                    style="@style/small_text_style"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="0s"
+                    android:textColor="#ff0000" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bodybuilding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="sportsfragment"
-        android:textSize="24dp"/>
+        android:layout_above="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/btn_shape"
+        android:text="去健身" />
 
-</LinearLayout>
+</RelativeLayout>

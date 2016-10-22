@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.winorout.followme">
 
+    <!-- 震动权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" >
+    </uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,6 +20,24 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <service android:name=".sports.GetSetpService" >
+        </service>
+        <receiver
+            android:name=".personalCenter.AlarmReceiver"
+            android:process=":remote" >
+        </receiver>
+        <activity android:name=".personalCenter.Historcal" >
+        </activity>
+        <activity android:name=".personalCenter.Exercise" >
+        </activity>
+        <activity android:name=".personalCenter.Goals" >
+        </activity>
+        <activity android:name=".personalCenter.Setting" >
+        </activity>
+        <activity
+            android:name=".personalCenter.SettingTime"
+            android:label="SettingTime" >
         </activity>
     </application>
 
