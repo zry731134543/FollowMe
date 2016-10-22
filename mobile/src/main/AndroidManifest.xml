@@ -24,6 +24,8 @@
         </activity>
         <service android:name=".sports.GetSetpService" >
         </service>
+        <service android:name="com.winorout.connect.MobileMessageService"></service>
+
         <receiver
             android:name=".personalCenter.AlarmReceiver"
             android:process=":remote" >

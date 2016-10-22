@@ -29,7 +29,9 @@ import com.mobvoi.android.wearable.MessageEvent;
 import com.mobvoi.android.wearable.Node;
 import com.mobvoi.android.wearable.NodeApi;
 import com.mobvoi.android.wearable.Wearable;
+import com.winorout.connect.MobileMessageService;
 import com.winorout.followme.R;
+import com.winorout.interfaces.OnMessgaeChange;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -42,8 +44,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  * Created by Mr_Yan on 2016/10/3.
  */
 
-public class SportsFragment extends Fragment implements View.OnClickListener, DataApi.DataListener,
-        MessageApi.MessageListener, NodeApi.NodeListener, MobvoiApiClient.ConnectionCallbacks, MobvoiApiClient.OnConnectionFailedListener {
+public class SportsFragment extends Fragment implements View.OnClickListener,OnMessgaeChange {
 
     private static final String TAG = "w";
 
@@ -52,8 +53,7 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
     TextView total_kilor;
     TextView total_cal;
     TextView total_time;
-    GetSetpService.LocalBinder binder;
-    GetSetpService getservice;
+    MobileMessageService getservice;
     private int _step;
     private int _time;
     private double _calories;
@@ -65,24 +65,7 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
 
     // 模拟 消息传入 手表
     private Button mTextBtn;
-
-    /*********** 测试环境 ************/
-    private static final int REQUEST_RESOLVE_ERROR = 1000;
-
-    private static final String START_ACTIVITY_PATH = "/start-activity";
-    private static final String COUNT_PATH = "/count";
-    private static final String COUNT_KEY = "count";
-
-    private Handler mHandler;
-    private View mStartActivityBtn;
-    private boolean mResolvingError = false;
-    private MobvoiApiClient mMobvoiApiClient;
-
-    // Send DataItems.
-    private ScheduledExecutorService mGeneratorExecutor;
-    private ScheduledFuture<?> mDataItemGeneratorFuture;
-
-    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private MobileMessageService mMobileMessageService;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,16 +76,6 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
         bindView();
         show();
 
-        mHandler = new Handler();
-        Log.e(TAG, "onCreate() 1");
-        // Stores DataItems received by the local broadcaster or from the paired
-        // watch.
-        mGeneratorExecutor = new ScheduledThreadPoolExecutor(1);
-
-        mMobvoiApiClient = new MobvoiApiClient.Builder(getActivity()).addApi(Wearable.API).addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this).build();
-        Log.e(TAG, "onCreate() 111");
-
         return view;
     }
 
@@ -111,10 +84,8 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
      */
     private void createService() {
         // 启动获取步数服务
-        Intent intent = new Intent(getActivity(), GetSetpService.class);
-//		Intent intent = new Intent(getActivity(), TicWearService.class);
-        // intentRemind = new Intent(getActivity(),RemindService.class);
-        // getActivity().startService(intentRemind);
+//        Intent intent = new Intent(getActivity(), GetSetpService.class);
+		Intent intent = new Intent(getActivity(), MobileMessageService.class);
         getActivity().bindService(intent, connection, Context.BIND_AUTO_CREATE);
     }
 
@@ -145,10 +116,10 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
     private ServiceConnection connection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
-            binder = (GetSetpService.LocalBinder) service;
+            MobileMessageService.MyBinder binder = (MobileMessageService.MyBinder) service;
             setData(binder.getMessage());
             show();
-            getservice = binder.getservice();
+            getservice = binder.mobileMessageService;
             getservice.setOnprogressListener(new StepListencer() {
                 @Override
                 public void onprogress(Message msg) {
@@ -198,10 +169,6 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
         Log.e("zryservice", "重新回调Fragment" + db.selectGoals());
         step = db.selectGoals() != null ? Integer.parseInt(db.selectGoals()) : 10000;
         handler.sendEmptyMessage(0);
-        // mDataItemGeneratorFuture =
-        // mGeneratorExecutor.scheduleWithFixedDelay(new DataItemGenerator(), 1,
-        // 5,
-        // TimeUnit.SECONDS);
         super.onResume();
     }
 
@@ -209,179 +176,13 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
     public void onStart() {
         Log.e("w", "onStart()");
         super.onStart();
-        if (!mResolvingError) {
-            mMobvoiApiClient.connect();
-        }
-    }
-
-    @Override
-    public void onPause() {
-        Log.e("w", "onPause()");
-        super.onPause();
-//		mDataItemGeneratorFuture.cancel(true /* mayInterruptIfRunning */);
-    }
-
-    @Override
-    public void onStop() {
-        Log.e("w", "onStop()");
-        if (!mResolvingError) {
-            Wearable.DataApi.removeListener(mMobvoiApiClient, this);
-            Wearable.MessageApi.removeListener(mMobvoiApiClient, this);
-            Wearable.NodeApi.removeListener(mMobvoiApiClient, this);
-            mMobvoiApiClient.disconnect();
-        }
-        super.onStop();
-    }
-
-    @Override
-    // ConnectionCallbacks
-    public void onConnected(Bundle connectionHint) {
-        Log.e("w", "onConnected()");
-        mResolvingError = false;
-        mStartActivityBtn.setEnabled(true);
-        Wearable.DataApi.addListener(mMobvoiApiClient, this);
-        Wearable.MessageApi.addListener(mMobvoiApiClient, this);
-        Wearable.NodeApi.addListener(mMobvoiApiClient, this);
-    }
-
-    @Override
-    // ConnectionCallbacks
-    public void onConnectionSuspended(int cause) {
-        Log.e("w", "onConnectionSuspended()");
-        mStartActivityBtn.setEnabled(false);
-    }
-
-    @Override
-    // OnConnectionFailedListener
-    public void onConnectionFailed(ConnectionResult result) {
-        Log.e("w", "onConnectionFailed()");
-        if (mResolvingError) {
-            // Already attempting to resolve an error.
-            return;
-        } else if (result.hasResolution()) {
-            // try {
-            // mResolvingError = true;
-            // result.startResolutionForResult(this, REQUEST_RESOLVE_ERROR);
-            // } catch (IntentSender.SendIntentException e) {
-            // // There was an error with the resolution intent. Try again.
-            // mMobvoiApiClient.connect();
-            // }
-        } else {
-            mResolvingError = false;
-            mStartActivityBtn.setEnabled(false);
-            Wearable.DataApi.removeListener(mMobvoiApiClient, this);
-            Wearable.MessageApi.removeListener(mMobvoiApiClient, this);
-            Wearable.NodeApi.removeListener(mMobvoiApiClient, this);
-        }
-    }
-
-    @Override
-    // DataListener
-    public void onDataChanged(DataEventBuffer dataEvents) {
-        Log.e("w", "onDataChanged()");
-        LOGD(TAG, "onDataChanged: " + dataEvents);
-        final List<DataEvent> events = FreezableUtils.freezeIterable(dataEvents);
-        dataEvents.close();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (DataEvent event : events) {
-                    if (event.getType() == DataEvent.TYPE_CHANGED) {
-                        Log.e("w", "event.getDataItem().toString() = " + event.getDataItem().toString());
-                    } else if (event.getType() == DataEvent.TYPE_DELETED) {
-                        Log.e("w", "event.getDataItem().toString() = " + event.getDataItem().toString());
-                    }
-                }
-            }
-        });
-    }
-
-    @Override
-    // MessageListener
-    public void onMessageReceived(final MessageEvent messageEvent) {
-        LOGD(TAG, "onMessageReceived() A message from watch was received:" + messageEvent.getRequestId() + " "
-                + messageEvent.getPath());
-        Log.e("w", "messageEvent.getRequestId() = " + messageEvent.getRequestId());
-        Log.e("w", "messageEvent.getPath() = " + messageEvent.getPath());
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-            }
-        });
 
     }
 
     @Override
-    // NodeListener
-    public void onPeerConnected(final Node peer) {
-        Log.e("w", "onPeerConnected()");
-        LOGD(TAG, "onPeerConnected: " + peer);
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-            }
-        });
-
-    }
-
-    @Override
-    // NodeListener
-    public void onPeerDisconnected(final Node peer) {
-        Log.e("w", "onPeerDisconnected()");
-        LOGD(TAG, "onPeerDisconnected: " + peer);
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-            }
-        });
-    }
-
-    // ???
-    private Collection<String> getNodes() {
-        Log.e("w", "getNodes()");
-        HashSet<String> results = new HashSet<String>();
-        NodeApi.GetConnectedNodesResult nodes = Wearable.NodeApi.getConnectedNodes(mMobvoiApiClient).await();
-
-        for (Node node : nodes.getNodes()) {
-            results.add(node.getId());
-        }
-
-        return results;
-    }
-
-    private void sendStartActivityMessage(String node) {
-        Log.e("w", "sendStartActivityMessage()");
-        Wearable.MessageApi.sendMessage(mMobvoiApiClient, node, START_ACTIVITY_PATH, new byte[0])
-                .setResultCallback(new ResultCallback<MessageApi.SendMessageResult>() {
-                    @Override
-                    public void onResult(MessageApi.SendMessageResult sendMessageResult) {
-                        if (!sendMessageResult.getStatus().isSuccess()) {
-                            Log.e(TAG, "Failed to send message with status code: "
-                                    + sendMessageResult.getStatus().getStatusCode());
-                        }
-                    }
-                });
-    }
-
-    private class StartWearableActivityTask extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected Void doInBackground(Void... args) {
-            Collection<String> nodes = getNodes();
-            for (String node : nodes) {
-                sendStartActivityMessage(node);
-            }
-            return null;
-        }
-    }
-
-    /** Sends an RPC to start a fullscreen Activity on the wearable. */
-    public void onStartWearableActivityClick(View view) {
-
-        // Trigger an AsyncTask that will query for a list of connected nodes
-        // and send a
-        // "start-activity" message to each connected node.
-        new StartWearableActivityTask().execute();
+    public void onDestroy() {
+        getActivity().unbindService(connection);
+        super.onDestroy();
     }
 
     /**
@@ -389,5 +190,10 @@ public class SportsFragment extends Fragment implements View.OnClickListener, Da
      */
     private static void LOGD(final String tag, String message) {
         Log.e(tag, message);
+    }
+
+    @Override
+    public void receiveMessage(MessageEvent messageEvent) {
+
     }
 }
