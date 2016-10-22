@@ -15,13 +15,9 @@ import com.mobvoi.android.wearable.MessageApi;
 import com.mobvoi.android.wearable.MessageEvent;
 import com.mobvoi.android.wearable.Wearable;
 import com.winorout.followme.sports.DateTimeData;
-import com.winorout.followme.sports.GetSetpService;
 import com.winorout.followme.sports.PedometerDB;
 import com.winorout.followme.sports.StepListencer;
-import com.winorout.interfaces.OnMessgaeChange;
-import com.winorout.tools.Logg;
 
-import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -38,7 +34,6 @@ public class MobileMessageService extends Service implements MobvoiApiClient.Con
         ,MessageApi.MessageListener,MobvoiApiClient.OnConnectionFailedListener{
     private static final String START_ACTIVITY_PATH = "/step_count";
     private static final String TAG="ryzhang";
-    private OnMessgaeChange onMessgaeChange;
     private MobvoiApiClient mMobvoiApiClient;
 
     private StepListencer progress;
@@ -159,13 +154,7 @@ public class MobileMessageService extends Service implements MobvoiApiClient.Con
         super.onDestroy();
     }
 
-    /**
-     * 设置接收消息的接口
-     * @param onMessgaeChange
-     */
-    public void setOnMessgaeChange(OnMessgaeChange onMessgaeChange){
-        this.onMessgaeChange=onMessgaeChange;
-    }
+
     /**
      * 监听运动是否停止的方法
      */
@@ -216,8 +205,6 @@ public class MobileMessageService extends Service implements MobvoiApiClient.Con
                 setMessage();
                 progress.onprogress(msg);
             }
-//            Logg.d("getData:"+new String(messageEvent.getData()));
-//            int step=Integer.parseInt(new String(messageEvent.getData()));
         }
     }
 }
