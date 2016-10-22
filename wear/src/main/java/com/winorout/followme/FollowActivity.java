@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.winorout.adapter.FollowLVAdapter;
 import com.winorout.base.BaseActivity;
+import com.winorout.connect.WearMessageService;
 import com.winorout.interfaces.FollowViewInterface;
 import com.winorout.services.DomStealService;
 
@@ -19,11 +20,13 @@ public class FollowActivity extends BaseActivity implements FollowViewInterface{
 
     private WearableListView mListView;    //主界面lv
     private DomStealService services;
-
+    Intent startIntent;
     @Override
     public void initVariables() {
         Intent intent = new Intent(this, DomStealService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
+        startIntent = new Intent(this, WearMessageService.class);
+        startService(startIntent);
     }
 
     @Override
