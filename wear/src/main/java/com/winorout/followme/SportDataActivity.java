@@ -6,6 +6,7 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.EditText;
 
 import com.winorout.base.BaseActivity;
 
@@ -17,11 +18,13 @@ public class SportDataActivity extends BaseActivity implements SensorEventListen
 
     private SensorManager mSensorManager;
     private Sensor mStepCounter;
+    private EditText step;
+    private String count;
 
     @Override
     public void initVariables() {
         mSensorManager =
-                (SensorManager)getSystemService(SENSOR_SERVICE);
+                (SensorManager) getSystemService(SENSOR_SERVICE);
         mStepCounter = mSensorManager.getDefaultSensor(
                 Sensor.TYPE_STEP_COUNTER);
     }
@@ -30,6 +33,7 @@ public class SportDataActivity extends BaseActivity implements SensorEventListen
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sportdata);
         initTopbar("数据");
+        step = (EditText) findViewById(R.id.step);
     }
 
     @Override
@@ -52,8 +56,10 @@ public class SportDataActivity extends BaseActivity implements SensorEventListen
     }
 
     public void onSensorChanged(SensorEvent event) {
+        count = String.valueOf(event.values[0]);
         Log.d("Test", "Got the step count : " +
-                String.valueOf(event.values[0]));
+                count);
+        step.setText(count);
     }
 
 }
