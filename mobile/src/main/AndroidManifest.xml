@@ -9,6 +9,7 @@
     </uses-permission>
 
     <application
+        android:name="com.winorout.app.FollowApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,6 +24,8 @@
         </activity>
         <service android:name=".sports.GetSetpService" >
         </service>
+        <service android:name="com.winorout.connect.MobileMessageService"></service>
+
         <receiver
             android:name=".personalCenter.AlarmReceiver"
             android:process=":remote" >

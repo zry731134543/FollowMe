@@ -1,22 +1,34 @@
 package com.winorout.followme;
 
+import android.content.ComponentName;
+import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.MessageEvent;
+import com.winorout.connect.MobileMessageService;
+import com.winorout.connect.MobileSynchroService;
 import com.winorout.followme.barrage.BarrageFragment;
 import com.winorout.followme.personalCenter.PersonalCenterFragment;
 import com.winorout.followme.sports.SportsFragment;
+import com.winorout.interfaces.OnMessgaeChange;
+import com.winorout.tools.Logg;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FollowActivity extends FragmentActivity implements View.OnClickListener {
+public class FollowActivity extends FragmentActivity implements View.OnClickListener{
 
     private ViewPager mviewPager;
     private FragmentPagerAdapter madapter;
@@ -27,18 +39,34 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     private ImageView mtabSportsImg;
     private ImageView mtabBarrageImg;
     private ImageView mtabPersonalImg;
+//    private MobileMessageService mMobileMessageService;
+    private static final String TAG="ryzhang";
+//    private ServiceConnection connection = new ServiceConnection() {
+//        @Override
+//        public void onServiceDisconnected(ComponentName name) {
+//        }
+//        @Override
+//        public void onServiceConnected(ComponentName name, IBinder service) {
+//            MobileMessageService.MyBinder myBinder=(MobileMessageService.MyBinder)service;
+//            mMobileMessageService=myBinder.mobileMessageService;
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follow);
-
         initView();
         initEvent();
-
         //默认初始化显示第一个Tab标签
         setSelect(0);
     }
+
+//    @Override
+//    protected void onDestroy() {
+//        unbindService(connection);
+//        super.onDestroy();
+//    }
 
     private void initEvent() {
         mtabSports.setOnClickListener(this);
@@ -64,6 +92,9 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     }
 
     private void initView() {
+//        Intent bindIntent = new Intent(FollowActivity.this, MobileMessageService.class);
+//        bindService(bindIntent, connection, BIND_AUTO_CREATE); //  绑定服务
+
         mtabSports = (LinearLayout) findViewById(R.id.tab_sports);
         mtabBarrage = (LinearLayout) findViewById(R.id.tab_barrage);
         mtabPersonal = (LinearLayout) findViewById(R.id.tab_personal);
@@ -148,4 +179,6 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         mtabBarrageImg.setImageResource(R.drawable.img_barrage_nomal);
         mtabPersonalImg.setImageResource(R.drawable.img_personal_nomal);
     }
+
+
 }
