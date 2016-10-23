@@ -5,5 +5,5 @@ package com.winorout.interfaces;
  */
 
 public interface OnStepChange {
-    void getStep(String step);
+    void getStep(int step);
 }

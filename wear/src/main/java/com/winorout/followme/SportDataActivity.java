@@ -1,52 +1,50 @@
 package com.winorout.followme;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.winorout.base.BaseActivity;
+import com.winorout.interfaces.OnStepChange;
+import com.winorout.presenter.SensorPresenter;
+import com.winorout.view.CircleProgressBar;
 
 
-public class SportDataActivity extends BaseActivity implements SensorEventListener {
 
-    private SensorManager mSensorManager;
-    private Sensor mStepCounter;
+public class SportDataActivity extends BaseActivity {
+    private CircleProgressBar mCircleBar;
+    SensorPresenter sensorPresenter;
 
     @Override
     public void initVariables() {
-        mSensorManager = (SensorManager)getSystemService(SENSOR_SERVICE);
-        mStepCounter = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        sensorPresenter = new SensorPresenter(this);
+        sensorPresenter.setOnStepChange(new OnStepChange() {
+            @Override
+            public void getStep(int step) {
+                mCircleBar.setProgressNotInUiThread(step);
+            }
+        });
     }
 
     @Override
     public void initView(Bundle savedInstanceState) {
         setContentView(R.layout.activity_sportdata);
         initTopbar("数据");
+        mCircleBar = (CircleProgressBar) findViewById(R.id.circleProgressbar);
+        mCircleBar.setProgress(sensorPresenter.fetchSteps());
     }
 
     @Override
     public void loadData() {
-
     }
 
     protected void onResume() {
+        sensorPresenter.registerListener();
         super.onResume();
-        mSensorManager.registerListener(this, mStepCounter, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     protected void onPause() {
+        sensorPresenter.unregisterListener();
         super.onPause();
-        mSensorManager.unregisterListener(this);
     }
 
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    public void onSensorChanged(SensorEvent event) {
-        Log.d("Test", "Got the step count : " +String.valueOf(event.values[0]));
-    }
 
 }

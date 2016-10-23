@@ -20,13 +20,12 @@ public class FollowActivity extends BaseActivity implements FollowViewInterface{
 
     private WearableListView mListView;    //主界面lv
     private DomStealService services;
-    Intent startIntent;
+
     @Override
     public void initVariables() {
         Intent intent = new Intent(this, DomStealService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
-        startIntent = new Intent(this, WearMessageService.class);
-        startService(startIntent);
+        startService(new Intent(this,WearMessageService.class));
     }
 
     @Override
@@ -44,6 +43,8 @@ public class FollowActivity extends BaseActivity implements FollowViewInterface{
     public void toSportActivity(Class otherActivity) {
         Intent intent = new Intent(this, otherActivity);
         startActivity(intent);
+        Intent startIntent = new Intent(this, WearMessageService.class);
+        startService(startIntent);
     }
 
     private ServiceConnection connection = new ServiceConnection() {
