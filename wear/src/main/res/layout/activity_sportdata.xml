@@ -12,25 +12,16 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="当前步数" />
-
-        <EditText
-            android:id="@+id/step"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:cursorVisible="false"
-            android:editable="false"
-            android:textColor="@color/blue" />
-
+        <com.winorout.view.CircleProgressBar
+            android:id="@+id/circleProgressbar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            />
     </LinearLayout>
 
 </LinearLayout>
