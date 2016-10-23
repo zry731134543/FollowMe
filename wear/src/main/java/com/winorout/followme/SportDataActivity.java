@@ -29,7 +29,6 @@ public class SportDataActivity extends BaseActivity {
         setContentView(R.layout.activity_sportdata);
         initTopbar("数据");
         mCircleBar = (CircleProgressBar) findViewById(R.id.circleProgressbar);
-        mCircleBar.setProgress(sensorPresenter.fetchSteps());
     }
 
     @Override
@@ -38,6 +37,7 @@ public class SportDataActivity extends BaseActivity {
 
     protected void onResume() {
         sensorPresenter.registerListener();
+        mCircleBar.setProgress(sensorPresenter.fetchSteps());
         super.onResume();
     }
 

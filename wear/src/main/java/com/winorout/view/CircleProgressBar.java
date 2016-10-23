@@ -71,7 +71,7 @@ public class CircleProgressBar extends View {
 
             // 绘制圆圈，进度条背景
             canvas.drawArc(mRectF, -90, 360, false, mPaint);
-            mPaint.setColor(Color.parseColor("#129cee"));
+            mPaint.setColor(Color.parseColor("#2abda3"));
             canvas.drawArc(mRectF, -90, ((float) mProgress / mMaxProgress) * 360, false, mPaint);
 
             // 绘制进度文案显示
@@ -81,14 +81,16 @@ public class CircleProgressBar extends View {
             mPaint.setTextSize(textHeight);
             int textWidth = (int) mPaint.measureText(text, 0, text.length());
             mPaint.setStyle(Paint.Style.FILL);
+            mPaint.setColor(Color.parseColor("#129cee"));
             canvas.drawText(text, width / 2 - textWidth / 2, height / 2-textHeight/2, mPaint);//上
 
             text=mMaxProgress+"";
             textWidth = (int) mPaint.measureText(text, 0, text.length());
+            mPaint.setColor(Color.parseColor("#ffffff"));
             canvas.drawText(text, width / 2 - textWidth / 2, height / 2 +textHeight*3/2 , mPaint);//下
 
-            mPaint.setColor(Color.parseColor("#ffffff"));
-            canvas.drawLine(width/4,height/2+1,width*3/4,height/2+1,mPaint);
+            mPaint.setColor(Color.parseColor("#111111"));
+            canvas.drawLine(width/4,height/2+1,width*3/4,height/2+1,mPaint);//线
 
         }
 
