@@ -19,9 +19,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.android.support:wearable:2.0.0-alpha3'
     compile 'com.google.android.gms:play-services-wearable:9.6.1'
-    compile files('libs/mobvoi-api.jar')
-    compile files('libs/BmobSDK_V3.2.7_1209.jar')
 }

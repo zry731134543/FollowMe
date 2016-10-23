@@ -6,6 +6,11 @@
 
     <!--震动权限-->
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -26,11 +31,11 @@
         <activity android:name=".SportDataActivity"/>
         <!--弹幕Activity-->
         <activity android:name=".BarrageActivity"/>
+        <activity android:name=".VoiceInputActivity"/>
         <!--防盗Activity-->
         <activity android:name=".DomStealActivity"/>
 
         <service android:name="com.winorout.services.DomStealService"/>
-        <service android:name="com.winorout.connect.WearMessageService"/>
     </application>
 
 </manifest>
