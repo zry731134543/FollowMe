@@ -29,9 +29,6 @@
         </activity>
         <!--数据Activity-->
         <activity android:name=".SportDataActivity"/>
-        <!--弹幕Activity-->
-        <activity android:name=".BarrageActivity"/>
-        <activity android:name=".VoiceInputActivity"/>
         <!--防盗Activity-->
         <activity android:name=".DomStealActivity"/>
 
