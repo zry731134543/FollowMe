@@ -28,8 +28,8 @@ public class WearMessageService extends Service{
     private static final String TAG="ryzhang";
     private MobvoiApiClient mMobvoiApiClient;
     private SensorPresenter sensorPresenter;
-    private final String stepPath="/step_count";
-    private final String messagePath="/message";
+    private final String SPORT_PATH="/sport";
+    private final String BARRAGE_PATH="/barrage";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -56,13 +56,13 @@ public class WearMessageService extends Service{
         sensorPresenter.setOnStepChange(new OnStepChange(){
             @Override
             public void getStep(int step) {
-                sendMessage(step+"",stepPath);
+                sendMessage(step+"",SPORT_PATH);
             }
         });
         new MyReceiver().setOnMessageChang(new OnMessgaeChange() {
             @Override
             public void receiveMessage(String message) {
-                sendMessage(message,messagePath);
+                sendMessage(message,BARRAGE_PATH);
             }
         });
         mMobvoiApiClient = new MobvoiApiClient.Builder(getApplication())
@@ -71,7 +71,7 @@ public class WearMessageService extends Service{
                     @Override
                     public void onConnected(Bundle connectionHint) {
                         int step=sensorPresenter.fetchSteps();
-                        sendMessage(step+"",stepPath);
+                        sendMessage(step+"",SPORT_PATH);
                         Log.d(TAG, "连接成功---当前步数："+step);
                     }
                     @Override
