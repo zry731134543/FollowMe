@@ -10,7 +10,7 @@ import com.mobvoi.android.speech.SpeechRecognitionApi;
 public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity{
 
     private static final String DEFAULT_NODE = "default_node";
-    private static final String TAG = "VoiceInputActivity";
+    private static final String TAG = "BarrageActivity";
     private Button mStartVoiceBtn;
     private TextView mVoiceTv;
     @Override
