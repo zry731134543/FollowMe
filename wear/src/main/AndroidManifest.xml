@@ -31,7 +31,8 @@
         <activity android:name=".SportDataActivity"/>
         <!--防盗Activity-->
         <activity android:name=".DomStealActivity"/>
-
+        <!--弹幕Activity-->
+        <activity android:name=".BarrageActivity"/>
         <service android:name="com.winorout.services.DomStealService"/>
         <service android:name="com.winorout.connect.WearMessageService"/>
     </application>

@@ -23,7 +23,7 @@ public class FollowLVAdapter extends WearableListView.Adapter {
 
     private Context mContext;
     private FollowViewInterface followInterface;
-    private String[] item_string= {"数据展示", "弹幕", "防盗"};
+    private String[] item_string= {"数据", "弹幕", "防盗"};
     private int[] item_imgId = {R.drawable.sportdata, R.drawable.barrage, R.drawable.domsteal};
     private Class[] intentActivity = {SportDataActivity.class, BarrageActivity.class, DomStealActivity.class};
 
