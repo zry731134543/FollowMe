@@ -1,16 +1,11 @@
 package com.winorout.connect;
 
 import android.app.Service;
-import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
-import android.database.ContentObserver;
-import android.database.Cursor;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.IBinder;
-import android.os.Message;
 import android.util.Log;
 
 import com.mobvoi.android.common.ConnectionResult;
@@ -18,8 +13,10 @@ import com.mobvoi.android.common.api.MobvoiApiClient;
 import com.mobvoi.android.common.api.ResultCallback;
 import com.mobvoi.android.wearable.MessageApi;
 import com.mobvoi.android.wearable.Wearable;
+import com.winorout.interfaces.OnMessgaeChange;
 import com.winorout.interfaces.OnStepChange;
 import com.winorout.presenter.SensorPresenter;
+import com.winorout.services.MyReceiver;
 
 
 /**
@@ -31,6 +28,8 @@ public class WearMessageService extends Service{
     private static final String TAG="ryzhang";
     private MobvoiApiClient mMobvoiApiClient;
     private SensorPresenter sensorPresenter;
+    private final String stepPath="/step_count";
+    private final String messagePath="/message";
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -52,13 +51,18 @@ public class WearMessageService extends Service{
         super.onDestroy();
     }
 
-
     private void init(){
         sensorPresenter=new SensorPresenter(this);
         sensorPresenter.setOnStepChange(new OnStepChange(){
             @Override
             public void getStep(int step) {
-                sendMessage(step+"");
+                sendMessage(step+"",stepPath);
+            }
+        });
+        new MyReceiver().setOnMessageChang(new OnMessgaeChange() {
+            @Override
+            public void receiveMessage(String message) {
+                sendMessage(message,messagePath);
             }
         });
         mMobvoiApiClient = new MobvoiApiClient.Builder(getApplication())
@@ -67,7 +71,7 @@ public class WearMessageService extends Service{
                     @Override
                     public void onConnected(Bundle connectionHint) {
                         int step=sensorPresenter.fetchSteps();
-                        sendMessage(step+"");
+                        sendMessage(step+"",stepPath);
                         Log.d(TAG, "连接成功---当前步数："+step);
                     }
                     @Override
@@ -84,12 +88,13 @@ public class WearMessageService extends Service{
     }
 
     /**
-     * 发送消息
-     * @param content
+     * 发送消息到手机
+     * @param content 发送的数据
+     * @param type 发送类别
      */
-    private void sendMessage(String content){
+    private void sendMessage(String content,String type){
         Wearable.MessageApi.sendMessage(
-                mMobvoiApiClient, "", "/step_count", content.getBytes()).setResultCallback(
+                mMobvoiApiClient, "", type, content.getBytes()).setResultCallback(
                 new ResultCallback<MessageApi.SendMessageResult>() {
                     @Override
                     public void onResult(MessageApi.SendMessageResult sendMessageResult) {
@@ -102,4 +107,6 @@ public class WearMessageService extends Service{
                 }
         );
     }
+
+
 }

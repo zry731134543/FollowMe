@@ -1,111 +1,70 @@
 package com.winorout.followme;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import com.mobvoi.android.common.ConnectionResult;
-import com.mobvoi.android.common.api.MobvoiApiClient;
-import com.mobvoi.android.common.api.ResultCallback;
 import com.mobvoi.android.speech.SpeechRecognitionApi;
-import com.mobvoi.android.wearable.MessageApi;
-import com.mobvoi.android.wearable.MessageEvent;
-import com.mobvoi.android.wearable.Wearable;
 
-public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity  implements
-        MobvoiApiClient.ConnectionCallbacks, MobvoiApiClient.OnConnectionFailedListener,
-        MessageApi.MessageListener {
+public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity{
 
     private static final String DEFAULT_NODE = "default_node";
     private static final String TAG = "VoiceInputActivity";
     private Button mStartVoiceBtn;
     private TextView mVoiceTv;
-    private MobvoiApiClient mMobvoiApiClient;
-    private String mText = null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView(savedInstanceState);
+        initVariables();
+        startService(new Intent(BarrageActivity.this,BarrageActivity.class));
+    }
+    public  void initView(Bundle savedInstanceState){
         setContentView(R.layout.activity_voice_input);
         ((TextView)findViewById(R.id.title_tv)).setText("弹幕");
         mStartVoiceBtn = (Button) findViewById(R.id.test_button);
+        mVoiceTv = (TextView) findViewById(R.id.speak_tip);
+    }
+
+    public  void initVariables(){
         mStartVoiceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startVoiceInput();
             }
         });
-        mVoiceTv = (TextView) findViewById(R.id.speak_tip);
-        mMobvoiApiClient = new MobvoiApiClient.Builder(this)
-                .addApi(Wearable.API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this)
-                .build();
+
+        mVoiceTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendMessage(mVoiceTv.getText()+"");
+                mVoiceTv.setText("");
+            }
+        });
+
     }
 
     @Override
     public void onRecognitionSuccess(String text) {
         mVoiceTv.setText(text);
-        mText = text;
     }
 
     @Override
     public void onRecognitionFailed() {
-        mVoiceTv.setText("onRecognitionFailed");
-        mText = "识别失败";
+        mVoiceTv.setText("识别失败");
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mMobvoiApiClient.connect();
+    /**
+     * 通过广播发送消息到服务
+     * @param content
+     */
+    private void sendMessage(String content){
+        Log.d("ryzhang","sendMessage:"+content);
+        Intent intent = new Intent();
+        intent.setAction("com.winorout.followme.receiver");
+        intent.putExtra("message", content);
+        sendBroadcast(intent);
     }
 
-    @Override
-    public void onConnected(Bundle connectionHint) {
-        Log.d(TAG, "onConnected!");
-        Wearable.MessageApi.addListener(mMobvoiApiClient, this);
-        if (mText != null) {
-            sendMessagetoPhone(mText);
-        }
-    }
-
-    @Override
-    public void onConnectionSuspended(int cause) {
-    }
-
-    @Override
-    public void onConnectionFailed(ConnectionResult result) {
-        Log.e(TAG, "onConnectionFailed(): Failed to connect, with result: " + result);
-    }
-
-    @Override
-    public void onMessageReceived(MessageEvent event) {
-        Log.d(TAG, "onMessageReceived: " + event);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Wearable.MessageApi.removeListener(mMobvoiApiClient, this);
-        mMobvoiApiClient.disconnect();
-    }
-
-    private void sendMessagetoPhone(String voice) {
-        byte[] data = voice.getBytes();
-        Wearable.MessageApi.sendMessage(
-                mMobvoiApiClient, DEFAULT_NODE, "Voice", data).setResultCallback(
-                new ResultCallback<MessageApi.SendMessageResult>() {
-                    @Override
-                    public void onResult(MessageApi.SendMessageResult sendMessageResult) {
-                        if (!sendMessageResult.getStatus().isSuccess()) {
-                            Log.e(TAG, "Failed to send message with status code: "
-                                    + sendMessageResult.getStatus().getStatusCode());
-                        } else {
-                            Log.d(TAG, "Success");
-                        }
-                    }
-                }
-        );
-    }
 }
