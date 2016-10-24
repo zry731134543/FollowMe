@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.wearable.MessageApi;
@@ -28,7 +29,7 @@ import com.winorout.tools.Logg;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FollowActivity extends FragmentActivity implements View.OnClickListener{
+public class FollowActivity extends FragmentActivity implements View.OnClickListener {
 
     private ViewPager mviewPager;
     private FragmentPagerAdapter madapter;
@@ -39,8 +40,9 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     private ImageView mtabSportsImg;
     private ImageView mtabBarrageImg;
     private ImageView mtabPersonalImg;
-//    private MobileMessageService mMobileMessageService;
-    private static final String TAG="ryzhang";
+    private TextView title;
+    //    private MobileMessageService mMobileMessageService;
+    private static final String TAG = "ryzhang";
 //    private ServiceConnection connection = new ServiceConnection() {
 //        @Override
 //        public void onServiceDisconnected(ComponentName name) {
@@ -102,6 +104,7 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         mtabBarrageImg = (ImageView) findViewById(R.id.tab_barrage_img);
         mtabPersonalImg = (ImageView) findViewById(R.id.tab_personal_img);
         mviewPager = (ViewPager) findViewById(R.id.viewPager);
+        title = ((TextView) findViewById(R.id.title));
 
         //初始化三个Tab对应的Fragment
         mfragments = new ArrayList<Fragment>();
@@ -161,12 +164,15 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         switch (i) {
             case 0:
                 mtabSportsImg.setImageResource(R.drawable.img_sports_pressed);
+                title.setText("益动");
                 break;
             case 1:
                 mtabBarrageImg.setImageResource(R.drawable.img_barrage_pressed);
+                title.setText("发送弹幕");
                 break;
             case 2:
                 mtabPersonalImg.setImageResource(R.drawable.img_personal_pressed);
+                title.setText("益我");
                 break;
         }
     }
