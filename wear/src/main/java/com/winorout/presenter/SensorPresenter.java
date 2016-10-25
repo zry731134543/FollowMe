@@ -53,17 +53,17 @@ public class SensorPresenter{
 
     public int fetchSteps() {
         int steps = 0;
-        double distance ;
+        int distance ;
         int goal;
         Cursor cursor = mResolver.query(STEP_URI, null, null, null, null);
         if (cursor != null) {
             try {
                 if (cursor.moveToNext()) {
                     steps = cursor.getInt(0);
-                    distance = cursor.getDouble(1);
+                    distance = cursor.getInt(1);
                     goal=cursor.getInt(2);
                     sportData=new SportData(steps,distance,goal);
-                    String s3=cursor.getColumnName(3);
+                    String s3=cursor.getString(3);
                     Log.d("ryzhang","enable:"+s3);
                 }
             } finally {
