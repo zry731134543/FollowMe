@@ -41,18 +41,7 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     private ImageView mtabBarrageImg;
     private ImageView mtabPersonalImg;
     private TextView title;
-    //    private MobileMessageService mMobileMessageService;
     private static final String TAG = "ryzhang";
-//    private ServiceConnection connection = new ServiceConnection() {
-//        @Override
-//        public void onServiceDisconnected(ComponentName name) {
-//        }
-//        @Override
-//        public void onServiceConnected(ComponentName name, IBinder service) {
-//            MobileMessageService.MyBinder myBinder=(MobileMessageService.MyBinder)service;
-//            mMobileMessageService=myBinder.mobileMessageService;
-//        }
-//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +51,9 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         initEvent();
         //默认初始化显示第一个Tab标签
         setSelect(0);
+        startService(new Intent(this,MobileMessageService.class));
     }
 
-//    @Override
-//    protected void onDestroy() {
-//        unbindService(connection);
-//        super.onDestroy();
-//    }
 
     private void initEvent() {
         mtabSports.setOnClickListener(this);
@@ -94,9 +79,6 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     }
 
     private void initView() {
-//        Intent bindIntent = new Intent(FollowActivity.this, MobileMessageService.class);
-//        bindService(bindIntent, connection, BIND_AUTO_CREATE); //  绑定服务
-
         mtabSports = (LinearLayout) findViewById(R.id.tab_sports);
         mtabBarrage = (LinearLayout) findViewById(R.id.tab_barrage);
         mtabPersonal = (LinearLayout) findViewById(R.id.tab_personal);

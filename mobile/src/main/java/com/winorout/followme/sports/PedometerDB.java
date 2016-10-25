@@ -61,16 +61,15 @@ public class PedometerDB {
 
 	/**
 	 * 查找数据
-	 * 
-	 * @param data
+	 *
 	 * @return
 	 */
-	public DateTimeData queryNow(DateTimeData data) {
-		DateTimeData datas = data;
+	public DateTimeData queryNow() {
+		DateTimeData datas = new DateTimeData("",0,0,0,0);
 		Cursor cursor = db.query("now_table", null, null, null, null, null, null);
 		if (cursor.moveToFirst()) {
 			cursor.moveToLast();
-			String currentTime = data.date;
+			String currentTime = cursor.getString(cursor.getColumnIndex("startTime"));
 			int time = cursor.getInt(cursor.getColumnIndex("totalTime"));
 			int step = cursor.getInt(cursor.getColumnIndex("totalStep"));
 			float calorimetry = cursor.getFloat(cursor.getColumnIndex("totalCalorimetry"));
@@ -122,20 +121,19 @@ public class PedometerDB {
 				insertRemind(time,depict);
 		}
 	}
-	public String selectGoals(){
+	public int selectGoals(){
 		Cursor cursor = db.query("goals", null,null,null, null, null, null);
 		if(!cursor.moveToFirst()){
 			Log.d("zryservice", "未设置步数");
-//			insertGoals(10000+"");
-			return null;
+			return 0;
 		}
-		return cursor.getString(0);
+		return cursor.getInt(0);
 	}
-	public void insertGoals(String step) {
+	public void insertGoals(int step) {
 		Log.d("zryservice", "设置步数"+step);
 		ContentValues values = new ContentValues();
 		values.put("step", step);
-		if(selectGoals()!=null){
+		if(selectGoals()!=0){
 			Log.d("zryservice", "步数不为空"+selectGoals());
 			db.update("goals", values, null, null);
 			return;

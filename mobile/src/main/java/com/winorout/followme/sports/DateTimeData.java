@@ -3,13 +3,15 @@ package com.winorout.followme.sports;
 import android.os.Bundle;
 import android.os.Message;
 
+import java.io.Serializable;
+
 /**
  * 存放实时数据表数据
  * @author zhangruyi 3.20
  * 
  *
  */
-public class DateTimeData {
+public class DateTimeData implements Serializable{
 	/**
 	 * 运动时间
 	 */
@@ -39,9 +41,9 @@ public class DateTimeData {
 	 * 构造方法
 	 * @param date 运动时间
 	 * @param time 总时间
-	 * @param totalStep 步数
-	 * @param totalCalorimetry 总热量
-	 * @param totalKilometer 总里数
+	 * @param step 步数
+	 * @param calorimetry 总热量
+	 * @param kilometer 总里数
 	 */
 	public DateTimeData(String date, int time, int step, double calorimetry,
 						double kilometer) {

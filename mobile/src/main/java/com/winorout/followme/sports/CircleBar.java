@@ -112,6 +112,7 @@ public class CircleBar extends View {
     // 中间的数
     public synchronized void setText(int text) {
         mText = text;
+        setProgress(mText,1);
         this.postInvalidate();// 可以用子线程更新视图的方法调用
     }
 
