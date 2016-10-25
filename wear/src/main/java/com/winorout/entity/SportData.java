@@ -1,6 +1,4 @@
-package com.winorout.connect;
-
-import android.util.Log;
+package com.winorout.entity;
 
 /**
  *  运动数据
@@ -9,10 +7,12 @@ import android.util.Log;
  */
 public class SportData {
     private int step;
-    private double distance;
-    public SportData(int step,double distance){
+    private int distance;
+    private int goal;
+    public SportData(int step,int distance,int goal){
         this.step=step;
         this.distance=distance;
+        this.goal=goal;
     }
 
     /**
@@ -20,9 +20,8 @@ public class SportData {
      * @return
      */
     public String toJSON(){
-        String json="{\"step\":%d,\"distance\":\"%s\"}";
-        json=String.format(json,step,distance+"");
-        Log.d("ryzhang","json:"+json);
+        String json="{\"step\":%d,\"distance\":%d,\"goal\":%d}";
+        json=String.format(json,step,distance,goal);
         return json;
     }
 
@@ -34,11 +33,19 @@ public class SportData {
         this.step = step;
     }
 
-    public double getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
     }
 }

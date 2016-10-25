@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
 
-import com.winorout.connect.SportData;
+import com.winorout.entity.SportData;
 import com.winorout.interfaces.OnStepChange;
 
 
@@ -32,7 +32,6 @@ public class SensorPresenter{
             public void onChange(boolean selfChange) {
                 super.onChange(selfChange);
                 mSteps = fetchSteps();
-                Log.d("ryzhang","当前步数"+mSteps);
                 if(onStepChange!=null){
                     onStepChange.getStep(sportData);
                 }
@@ -54,14 +53,18 @@ public class SensorPresenter{
 
     public int fetchSteps() {
         int steps = 0;
-        double distance ;
+        int distance ;
+        int goal;
         Cursor cursor = mResolver.query(STEP_URI, null, null, null, null);
         if (cursor != null) {
             try {
                 if (cursor.moveToNext()) {
                     steps = cursor.getInt(0);
-                    distance = cursor.getDouble(1);
-                    sportData=new SportData(steps,distance);
+                    distance = cursor.getInt(1);
+                    goal=cursor.getInt(2);
+                    sportData=new SportData(steps,distance,goal);
+                    String s3=cursor.getString(3);
+                    Log.d("ryzhang","enable:"+s3);
                 }
             } finally {
                 cursor.close();
