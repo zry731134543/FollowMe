@@ -1,6 +1,4 @@
-package com.winorout.connect;
-
-import android.util.Log;
+package com.winorout.entity;
 
 /**
  *  运动数据
@@ -22,7 +20,6 @@ public class SportData {
     public String toJSON(){
         String json="{\"step\":%d,\"distance\":\"%s\"}";
         json=String.format(json,step,distance+"");
-        Log.d("ryzhang","json:"+json);
         return json;
     }
 

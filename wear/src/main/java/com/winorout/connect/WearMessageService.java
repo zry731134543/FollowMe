@@ -16,6 +16,7 @@ import com.mobvoi.android.common.api.MobvoiApiClient;
 import com.mobvoi.android.common.api.ResultCallback;
 import com.mobvoi.android.wearable.MessageApi;
 import com.mobvoi.android.wearable.Wearable;
+import com.winorout.entity.SportData;
 import com.winorout.interfaces.OnStepChange;
 import com.winorout.presenter.SensorPresenter;
 
