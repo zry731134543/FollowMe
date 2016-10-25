@@ -74,4 +74,15 @@
     </declare-styleable>
     <attr name="abstractWheelViewStyle" format="reference" />
 
+    <!--折线图的属性-->
+    <declare-styleable name="LineView">
+        <attr name="xycolor" format="color"/>  <!-- xy坐标轴颜色-->
+        <attr name="xywidth" format="dimension"/>  <!--xy坐标轴宽度-->
+        <attr name="textcolor" format="color"/> <!--坐标轴字体颜色-->
+        <attr name="textsize" format="dimension" /> <!--坐标轴文字大小-->
+        <attr name="linecolor" format="color"/> <!--折线颜色-->
+        <attr name="interval" format="dimension"/>  <!--x轴各个坐标点的水平间距-->
+        <attr name="bgcolor" format="color"/> <!--背景颜色-->
+    </declare-styleable>
+
 </resources>

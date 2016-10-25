@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,16 +27,10 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="left"
-            android:text="今天"
+            android:text="历史记录"
             android:textColor="#6DCAEC"
             android:textSize="20sp" />
 
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="left"
-            android:layout_marginLeft="10dp"
-            android:contentDescription="@string/app_name" />
     </LinearLayout>
 
     <TextView
@@ -43,18 +38,9 @@
         android:layout_height="1dp"
         android:background="@android:color/darker_gray" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:text="运动"
-        android:textSize="20sp" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:orientation="horizontal" >
 
         <TextView
@@ -62,7 +48,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:singleLine="true"
             android:typeface="normal"
             android:text="0"
             android:textColor="#6DCAEC"
@@ -123,5 +108,14 @@
         android:layout_height="1dp"
         android:layout_marginTop="10dp"
         android:background="@android:color/darker_gray" />
+
+    <com.winorout.views.LineView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bgcolor="#fff"
+        app:linecolor="#6DCAEC"
+        app:textsize="30px"
+        app:interval="100px"
+        />
 
 </LinearLayout>
