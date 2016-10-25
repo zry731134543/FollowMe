@@ -8,9 +8,11 @@ package com.winorout.entity;
 public class SportData {
     private int step;
     private double distance;
-    public SportData(int step,double distance){
+    private int goal;
+    public SportData(int step,double distance,int goal){
         this.step=step;
         this.distance=distance;
+        this.goal=goal;
     }
 
     /**
@@ -18,8 +20,8 @@ public class SportData {
      * @return
      */
     public String toJSON(){
-        String json="{\"step\":%d,\"distance\":\"%s\"}";
-        json=String.format(json,step,distance+"");
+        String json="{\"step\":%d,\"distance\":\"%s\",\"goal\":%d}";
+        json=String.format(json,step,distance+"",goal);
         return json;
     }
 
@@ -37,5 +39,13 @@ public class SportData {
 
     public void setDistance(double distance) {
         this.distance = distance;
+    }
+
+    public int getGoal() {
+        return goal;
+    }
+
+    public void setGoal(int goal) {
+        this.goal = goal;
     }
 }
