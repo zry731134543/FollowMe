@@ -3,7 +3,7 @@ package com.winorout.followme;
 import android.os.Bundle;
 
 import com.winorout.base.BaseActivity;
-import com.winorout.connect.SportData;
+import com.winorout.entity.SportData;
 import com.winorout.interfaces.OnStepChange;
 import com.winorout.presenter.SensorPresenter;
 import com.winorout.view.CircleProgressBar;
