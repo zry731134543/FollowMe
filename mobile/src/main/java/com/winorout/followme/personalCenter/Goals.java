@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.winorout.followme.R;
+import com.winorout.followme.sports.PedometerDB;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ public class Goals extends Activity implements OnClickListener {
     Button btn_twenty;
     Button save_goals;
     TextView tetx_data;
-    String step = null;
+    int step;
     PedometerDB db = PedometerDB.getInstance(this);
     List<Button> list = new ArrayList<Button>();
 
@@ -82,8 +83,8 @@ public class Goals extends Activity implements OnClickListener {
     private void initData() {
         //获取数据库运动目标
         step = db.selectGoals();
-        if (step == null) {
-            db.insertGoals(10000 + "");
+        if (step ==0) {
+            db.insertGoals(10000);
         }
         handle.sendEmptyMessage(0);
     }
@@ -93,7 +94,7 @@ public class Goals extends Activity implements OnClickListener {
         int id = v.getId();
         if (id == R.id.save_goals) {
             // 修改数据库数据
-            db.insertGoals(tetx_data.getText() + "");
+            db.insertGoals(Integer.parseInt(tetx_data.getText()+""));
             Toast.makeText(Goals.this, "保存成功", Toast.LENGTH_SHORT).show();
         } else {
             for (Button btn : list)

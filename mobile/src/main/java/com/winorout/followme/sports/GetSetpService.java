@@ -135,8 +135,8 @@ public class GetSetpService extends Service {
 	private void setInitData() {
 		database = PedometerDB.getInstance(GetSetpService.this);
 		DateTimeData data = database.queryNow();
-		total_step = data.step;
-		total_time = data.time;
+		total_step = data.getStep();
+		total_time = data.getTime();
 		height = 1.8;
 		weight = 70;
 		stride = 0.8;

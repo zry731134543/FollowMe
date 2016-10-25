@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.winorout.tools.Logg;
+
+import java.text.DecimalFormat;
 import java.util.List;
 
 
@@ -46,14 +49,14 @@ public class PedometerDB {
 	 */
 	public void insertNow(DateTimeData data) {
 		ContentValues values = new ContentValues();
-		values.put("startTime", data.date);
-		values.put("totalTime", data.time);
-		values.put("totalStep", data.step);
-		values.put("totalCalorimetry", data.calorimetry);
-		values.put("totalKilometer", data.kilometer);
+		values.put("startTime", data.getDate());
+		values.put("totalTime", data.getTime());
+		values.put("totalStep", data.getStep());
+		values.put("totalCalorimetry", data.getCalorimetry());
+		values.put("totalKilometer", data.getKilometer());
 		try {
 			db.insert("now_table", null, values);
-			Log.d("DBdatbase", "保存成功：" + data.step);
+			Log.d("ryzhang", "保存成功：");
 		} catch (Exception e) {
 			Log.d("DBdatbase", "插入失败");
 		}
@@ -72,9 +75,12 @@ public class PedometerDB {
 			String currentTime = cursor.getString(cursor.getColumnIndex("startTime"));
 			int time = cursor.getInt(cursor.getColumnIndex("totalTime"));
 			int step = cursor.getInt(cursor.getColumnIndex("totalStep"));
-			float calorimetry = cursor.getFloat(cursor.getColumnIndex("totalCalorimetry"));
-			float kilometer = cursor.getFloat(cursor.getColumnIndex("totalCalorimetry"));
-			Log.d("DBdatbase", "1____________当前步数____________________" + step);
+			Double calorimetry = cursor.getDouble(cursor.getColumnIndex("totalCalorimetry"));
+			calorimetry=Double.parseDouble(new DecimalFormat("#.0").format(calorimetry));
+			Double kilometer = cursor.getDouble(cursor.getColumnIndex("totalKilometer"));
+			kilometer=Double.parseDouble(new DecimalFormat("#.0").format(kilometer));
+			Logg.d("totalKilometer:"+kilometer);
+			Logg.d("totalCalorimetry:"+calorimetry);
 			datas = new DateTimeData(currentTime, time, step, calorimetry, kilometer);
 		}
 		return datas;

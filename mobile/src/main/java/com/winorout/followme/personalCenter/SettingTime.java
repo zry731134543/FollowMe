@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 
 import com.winorout.followme.R;
+import com.winorout.followme.sports.PedometerDB;
 
 import java.util.ArrayList;
 import java.util.Calendar;

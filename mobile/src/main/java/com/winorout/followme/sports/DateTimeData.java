@@ -12,31 +12,28 @@ import java.io.Serializable;
  *
  */
 public class DateTimeData implements Serializable{
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 运动时间
 	 */
-	public String date;
+	private String date;
 	/**
 	 * 总时间
 	 */
-	public int time;
+	private int time;
 	/**
 	 * 总步数
 	 */
-	public int step;
+	private int step;
 	/**
 	 * 总热量
 	 */
-	public double calorimetry;
+	private double calorimetry;
 	/**
 	 * 总里数
 	 */
-	public double kilometer;
-	
-	public DateTimeData()
-	{
-		
-	}
+	private double kilometer;
+
 	/**
 	 * 构造方法
 	 * @param date 运动时间
@@ -61,5 +58,45 @@ public class DateTimeData implements Serializable{
 		this.calorimetry=data.getDouble("calories");
 		this.kilometer=data.getDouble("kile");
 		
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getTime() {
+		return time;
+	}
+
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	public int getStep() {
+		return step;
+	}
+
+	public void setStep(int step) {
+		this.step = step;
+	}
+
+	public double getCalorimetry() {
+		return calorimetry;
+	}
+
+	public void setCalorimetry(double calorimetry) {
+		this.calorimetry = calorimetry;
+	}
+
+	public double getKilometer() {
+		return kilometer;
+	}
+
+	public void setKilometer(double kilometer) {
+		this.kilometer = kilometer;
 	}
 }

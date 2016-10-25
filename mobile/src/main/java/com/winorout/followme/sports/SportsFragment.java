@@ -31,7 +31,6 @@ public class SportsFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sportsfragment, container, false);
         bindView();
-        init();
         getData();
         registerReceiver();
         return view;
@@ -45,19 +44,11 @@ public class SportsFragment extends Fragment{
         total_cal = (TextView) view.findViewById(R.id.total_cal);
         total_time = (TextView) view.findViewById(R.id.total_time);
         circleBar = (CircleBar) view.findViewById(R.id.circle);
-        circleBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                circleBar.startCustomAnimation();
-            }
-        });
-    }
-    private void init(){
-        setCircleBar(1000);
     }
 
     @Override
     public void onResume() {
+        Logg.d("SportsFragment");
         getData();
         super.onResume();
     }
@@ -71,10 +62,8 @@ public class SportsFragment extends Fragment{
     private BroadcastReceiver receiver=new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Logg.d("onReceive");
             DateTimeData dateTimeData=(DateTimeData)intent.getSerializableExtra("sport");
-            int step=dateTimeData.step;
-            setCircleBar(step);
+            setCircleBar(dateTimeData.getStep());
             showView(dateTimeData);
         }
     };
@@ -90,10 +79,15 @@ public class SportsFragment extends Fragment{
     private void getData(){
         PedometerDB db=PedometerDB.getInstance(getContext());
         goal= db.selectGoals();
-        DateTimeData dateTimeData=db.queryNow();
-        int step=dateTimeData.step;
-        setCircleBar(step);
-        showView(dateTimeData);
+        goal=goal==0?10000:goal;
+        DateTimeData data=db.queryNow();
+        Logg.d("startTime:"+data.getDate());
+        Logg.d("totalTime:"+data.getTime());
+        Logg.d("totalStep:"+data.getStep());
+        Logg.d("totalKilometer:"+data.getKilometer());
+        Logg.d("totalCalorimetry:"+data.getCalorimetry());
+        setCircleBar(data.getStep());
+        showView(data);
     }
 
     private void setCircleBar(int step){
@@ -103,8 +97,8 @@ public class SportsFragment extends Fragment{
     }
 
     private void showView(DateTimeData dateTimeData){
-        total_kilor.setText(dateTimeData.kilometer/1000+"m");
-        total_cal.setText(dateTimeData.calorimetry/1000+"kj");
-        total_time.setText(dateTimeData.time+"s");
+        total_kilor.setText(dateTimeData.getKilometer()+"m");
+        total_cal.setText(dateTimeData.getCalorimetry()+"j");
+        total_time.setText(dateTimeData.getTime()+"s");
     }
 }

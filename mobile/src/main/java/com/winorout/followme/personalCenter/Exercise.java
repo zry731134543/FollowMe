@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 
 import com.winorout.followme.R;
+import com.winorout.followme.sports.PedometerDB;
 import com.winorout.followme.sports.SaveTime;
 
 import java.util.ArrayList;
