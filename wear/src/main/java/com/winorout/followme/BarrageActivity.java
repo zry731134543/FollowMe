@@ -1,40 +1,37 @@
 package com.winorout.followme;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.mobvoi.android.speech.SpeechRecognitionApi;
 
-public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity{
 
-    private static final String DEFAULT_NODE = "default_node";
-    private static final String TAG = "VoiceInputActivity";
+public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity{
+    public static final String SERVIC_ACTION = "com.aa.START";
     private Button mStartVoiceBtn;
     private TextView mVoiceTv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initView(savedInstanceState);
+        initView();
         initVariables();
-        startService(new Intent(BarrageActivity.this,BarrageActivity.class));
     }
-    public  void initView(Bundle savedInstanceState){
+
+    public void initView(){
         setContentView(R.layout.activity_voice_input);
         ((TextView)findViewById(R.id.title_tv)).setText("弹幕");
         mStartVoiceBtn = (Button) findViewById(R.id.test_button);
         mVoiceTv = (TextView) findViewById(R.id.speak_tip);
     }
 
-    public  void initVariables(){
+    public void initVariables(){
         mStartVoiceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startVoiceInput();
             }
         });
-
         mVoiceTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,7 +39,6 @@ public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity{
                 mVoiceTv.setText("");
             }
         });
-
     }
 
     @Override
@@ -56,13 +52,12 @@ public class BarrageActivity extends SpeechRecognitionApi.SpeechRecogActivity{
     }
 
     /**
-     * 通过广播发送消息到服务
+     * 通过广播消息
      * @param content
      */
     private void sendMessage(String content){
-        Log.d("ryzhang","sendMessage:"+content);
         Intent intent = new Intent();
-        intent.setAction("com.winorout.followme.receiver");
+        intent.setAction(SERVIC_ACTION);
         intent.putExtra("message", content);
         sendBroadcast(intent);
     }

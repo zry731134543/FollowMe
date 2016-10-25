@@ -35,11 +35,6 @@
         <activity android:name=".BarrageActivity"/>
         <service android:name="com.winorout.services.DomStealService"/>
         <service android:name="com.winorout.connect.WearMessageService"/>
-        <receiver android:name="com.winorout.services.MyReceiver">
-            <intent-filter>
-                <action android:name="com.winorout.followme.receiver"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>
