@@ -73,8 +73,8 @@ public class WearMessageService extends Service implements MobvoiApiClient.Conne
         sensorPresenter=new SensorPresenter(this);//监听步数变化
         sensorPresenter.setOnStepChange(new OnStepChange(){
             @Override
-            public void getStep(int step) {
-                sendMessage(step+"",SPORT_PATH);
+            public void getStep(SportData sportData) {
+                sendMessage(sportData.toJSON(),SPORT_PATH);
             }
         });
 

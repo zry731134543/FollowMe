@@ -3,6 +3,7 @@ package com.winorout.followme;
 import android.os.Bundle;
 
 import com.winorout.base.BaseActivity;
+import com.winorout.connect.SportData;
 import com.winorout.interfaces.OnStepChange;
 import com.winorout.presenter.SensorPresenter;
 import com.winorout.view.CircleProgressBar;
@@ -18,8 +19,8 @@ public class SportDataActivity extends BaseActivity {
         sensorPresenter = new SensorPresenter(this);
         sensorPresenter.setOnStepChange(new OnStepChange() {
             @Override
-            public void getStep(int step) {
-                mCircleBar.setProgressNotInUiThread(step);
+            public void getStep(SportData sportData) {
+                mCircleBar.setProgressNotInUiThread(sportData.getStep());
             }
         });
     }
