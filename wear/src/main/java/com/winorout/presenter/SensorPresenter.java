@@ -31,7 +31,9 @@ public class SensorPresenter{
                 super.onChange(selfChange);
                 mSteps = fetchSteps();
                 Log.d("ryzhang","当前步数"+mSteps);
-                onStepChange.getStep(mSteps);
+                if(onStepChange!=null){
+                    onStepChange.getStep(mSteps);
+                }
             }
         };
 
