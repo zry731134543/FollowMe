@@ -2,7 +2,9 @@ package com.winorout.followme.personalCenter;
 
 
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -14,8 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.mobvoi.android.common.ConnectionResult;
@@ -50,10 +54,39 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private MobvoiApiClient mClient;
     private Handler handler;
 
+    private RelativeLayout rootview;
+    private RelativeLayout.LayoutParams layoutParams;
+    private TextView step;
+    private String count;
+    private Handler mhHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0x123) {
+                count = String.valueOf(msg.obj);
+                step.setText(count);
+                SharedPreferences mSharedPreferences = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = mSharedPreferences.edit();
+                editor.putString("user_mobile", count);
+                editor.commit();
+            }
+        }
+    };
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.centerfragment, container, false);
+        step = (TextView) view.findViewById(R.id.step);
+        SharedPreferences  sp = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+        String numbers = sp.getString("user_mobile", "");
+        step.setText(numbers);
+        step.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MyDialog myDialog = new MyDialog(getContext(), mhHandler);
+                myDialog.show();
+            }
+        });
         return view;
     }
 
@@ -131,10 +164,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Intent intent1 = new Intent(getActivity(), Exercise.class);
                 startActivity(intent1);
                 break;
-            case R.id.goals:
-                Intent intent2 = new Intent(getActivity(),Goals.class);
-                startActivity(intent2);
-                break;
+//            case R.id.goals:
+//                Intent intent2 = new Intent(getActivity(),Goals.class);
+//                startActivity(intent2);
+//                break;
             case R.id.device:
                 if (isConnected) {
                     //如果已经和手表连接设备,打开设备信息界面
