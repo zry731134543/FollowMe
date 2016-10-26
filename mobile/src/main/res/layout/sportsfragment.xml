@@ -4,24 +4,24 @@
     android:layout_height="match_parent"
     android:background="#129CEE" >
 
-    <LinearLayout
-        android:id="@+id/linearLayout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#129cee" >
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linearLayout1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="#129cee" >-->
 
-        <TextView
-            android:id="@+id/text_pedometer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
-            android:background="#129CEE"
-            android:gravity="center"
-            android:text="益动"
-            android:textColor="#FFF"
-            android:textSize="24sp" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:id="@+id/text_pedometer"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="10dp"-->
+            <!--android:layout_marginTop="10dp"-->
+            <!--android:background="#129CEE"-->
+            <!--android:gravity="center"-->
+            <!--android:text="益动"-->
+            <!--android:textColor="#FFF"-->
+            <!--android:textSize="24sp" />-->
+    <!--</LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/circle_Layout"

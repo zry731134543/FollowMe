@@ -10,7 +10,9 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.winorout.followme.R;
 import com.winorout.tools.Logg;
@@ -19,8 +21,9 @@ import com.winorout.tools.Logg;
  * Created by Mr_Yan on 2016/10/3.
  */
 
-public class SportsFragment extends Fragment{
+public class SportsFragment extends Fragment implements View.OnClickListener{
     private static final String RECEIVER="com.winorout.followme.sport";
+    Button button;
     View view;
     CircleBar circleBar;
     TextView total_kilor;
@@ -33,6 +36,8 @@ public class SportsFragment extends Fragment{
         bindView();
         getData();
         registerReceiver();
+        button = (Button)view.findViewById(R.id.bodybuilding);
+        button.setOnClickListener(this);
         return view;
     }
 
@@ -100,5 +105,15 @@ public class SportsFragment extends Fragment{
         total_kilor.setText(dateTimeData.getKilometer()+"m");
         total_cal.setText(dateTimeData.getCalorimetry()+"j");
         total_time.setText(dateTimeData.getTime()+"s");
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.bodybuilding:
+                Toast.makeText(getActivity(),"敬请期待！",Toast.LENGTH_SHORT).show(); break;
+            default: break;
+
+        }
     }
 }
