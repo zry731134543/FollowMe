@@ -170,18 +170,26 @@
                 <!--android:background="#bebebe" />-->
 
             <LinearLayout
+                android:id="@+id/device"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
+                <ImageView
+                    android:id="@+id/deviceImg"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@drawable/connect"
+                    android:layout_marginLeft="20dp"
+                    android:layout_gravity="center"/>
+
                 <TextView
+                    android:id="@+id/deviceInfo"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:layout_weight="1"
-                    android:drawableLeft="@drawable/watch"
                     android:gravity="left"
-                    android:text="智能手表"
+                    android:text="连接手表"
                     android:textColor="#545454"
                     android:textSize="20dp" />
 
@@ -346,7 +354,7 @@
                 <!--android:background="#bebebe" />-->
 
             <LinearLayout
-                android:id="@+id/History"
+                android:id="@+id/history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">

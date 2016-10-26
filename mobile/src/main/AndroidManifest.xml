@@ -42,6 +42,7 @@
             android:name=".personalCenter.SettingTime"
             android:label="SettingTime" >
         </activity>
+        <activity android:name=".personalCenter.DeviceInfo"/>
     </application>
 
 </manifest>
