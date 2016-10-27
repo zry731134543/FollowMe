@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="#129CEE"
-              android:gravity="center_horizontal"
-              android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#129CEE"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -24,11 +24,10 @@
                 android:gravity="center">
 
                 <ImageView
-
                     android:id="@+id/picture"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/headportrait"/>
+                    android:src="@drawable/headportrait" />
             </LinearLayout>
 
             <TextView
@@ -37,8 +36,9 @@
                 android:gravity="center"
                 android:text="XXX"
                 android:textColor="#ffffff"
+                android:layout_margin="1dp"
                 android:textSize="20dp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -50,26 +50,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="       个人信息"
+                    android:text="         个人信息"
+                    android:padding="1dp"
                     android:textColor="#ffffff"
-                    android:textSize="13dp"/>
+                    android:textSize="13dp" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="13dp"
-                    android:src="@drawable/arrow"/>
+                    android:src="@drawable/arrow" />
             </LinearLayout>
 
 
-            // 分割线
-
+            <!--分割线-->
             <TextView
                 android:layout_width="340dp"
                 android:layout_height="0.1dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="25dp"
-                android:layout_marginTop="30dp"
-                android:background="#ffffff"/>
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="25dp"
+                android:background="#ffffff" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -91,7 +91,7 @@
                         android:gravity="center"
                         android:text="日均步数"
                         android:textColor="#ffffff"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/textView2"
@@ -100,7 +100,7 @@
                         android:gravity="center"
                         android:text="8173"
                         android:textColor="#b3e3ff"
-                        android:textSize="25dp"/>
+                        android:textSize="25dp" />
 
                 </LinearLayout>
 
@@ -109,7 +109,7 @@
                     android:layout_width="1dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:background="#ffffff"/>
+                    android:background="#ffffff" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -123,7 +123,7 @@
                         android:gravity="center"
                         android:text="总公里数"
                         android:textColor="#ffffff"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -131,14 +131,14 @@
                         android:gravity="center"
                         android:text="203"
                         android:textColor="#b3e3ff"
-                        android:textSize="25dp"/>
+                        android:textSize="25dp" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="1dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:background="#ffffff"/>
+                    android:background="#ffffff" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -152,7 +152,7 @@
                         android:gravity="center"
                         android:text="达标天数"
                         android:textColor="#ffffff"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <TextView
                         android:id="@+id/textView3"
@@ -161,7 +161,7 @@
                         android:gravity="center"
                         android:text="16"
                         android:textColor="#b3e3ff"
-                        android:textSize="25dp"/>
+                        android:textSize="25dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -170,10 +170,9 @@
                 android:layout_width="340dp"
                 android:layout_height="0.1dp"
                 android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="25dp"
-
-                android:background="#ffffff"/>
+                android:layout_marginBottom="25dp"
+                android:layout_marginTop="15dp"
+                android:background="#ffffff" />
 
 
             // 智能手表选项
@@ -189,7 +188,7 @@
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/watch"/>
+                    android:src="@drawable/watch" />
 
                 <TextView
                     android:id="@+id/deviceInfo"
@@ -199,9 +198,7 @@
                     android:layout_weight="1"
                     android:text="  智能手表"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
-
-                    />
+                    android:textSize="15dp" />
 
 
                 <ImageView
@@ -209,7 +206,7 @@
                     android:layout_height="15dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="40dp"
-                    android:src="@drawable/arrow"/>
+                    android:src="@drawable/arrow" />
             </LinearLayout>
 
 
@@ -220,7 +217,7 @@
                 android:layout_height="0.1dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="#ffffff"/>
+                android:background="#ffffff" />
 
 
             <LinearLayout
@@ -233,7 +230,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/target"/>
+                    android:src="@drawable/target" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -242,9 +239,7 @@
                     android:layout_weight="1"
                     android:text="  运动目标"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
-
-                    />
+                    android:textSize="15dp" />
 
 
                 <TextView
@@ -254,19 +249,16 @@
                     android:layout_gravity="center"
                     android:layout_marginRight="40dp"
                     android:text="1000"
-                    android:textColor="#ffffff"
-                    />
+                    android:textColor="#ffffff" />
             </LinearLayout>
 
-            // 分割线
-
+           <!--分割线-->
             <TextView
-
                 android:layout_width="340dp"
                 android:layout_height="0.1dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="#ffffff"/>
+                android:background="#ffffff" />
 
 
             <LinearLayout
@@ -279,7 +271,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/remind"/>
+                    android:src="@drawable/remind" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -298,7 +290,7 @@
                     android:layout_height="15dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="40dp"
-                    android:src="@drawable/arrow"/>
+                    android:src="@drawable/arrow" />
             </LinearLayout>
 
 
@@ -309,7 +301,7 @@
                 android:layout_height="0.1dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
-                android:background="#ffffff"/>
+                android:background="#ffffff" />
 
 
             // 历史记录选项
@@ -325,7 +317,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:src="@drawable/record"/>
+                    android:src="@drawable/record" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -344,7 +336,7 @@
                     android:layout_height="15dp"
                     android:layout_gravity="center"
                     android:layout_marginRight="40dp"
-                    android:src="@drawable/arrow"/>
+                    android:src="@drawable/arrow" />
             </LinearLayout>
 
 
