@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/top_bar"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
+    android:layout_height="35dp"
 
     android:background="#129CEE"
     android:gravity="center"
@@ -13,7 +13,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
         android:text="FollowMe"
         android:textColor="#ffffff"
         android:textSize="24dp"

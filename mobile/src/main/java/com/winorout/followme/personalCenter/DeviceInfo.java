@@ -9,26 +9,26 @@ import com.winorout.followme.R;
 
 public class DeviceInfo extends Activity {
 
-    private WebView webView;
+//    private WebView webView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_info);
-        webView = (WebView) findViewById(R.id.webView);
-        WebSettings webSettings =webView.getSettings();
-        webSettings.setJavaScriptEnabled(true);  //支持js
+//        webView = (WebView) findViewById(R.id.webView);
+//        WebSettings webSettings =webView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);  //支持js
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        webView.loadUrl("file:///android_asset/video.html");
+//        webView.loadUrl("file:///android_asset/video.html");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        webView.destroy();
+//        webView.destroy();
     }
 }
