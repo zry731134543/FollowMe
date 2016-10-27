@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobvoi.android.common.ConnectionResult;
 import com.mobvoi.android.common.api.MobvoiApiClient;
@@ -54,8 +55,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private MobvoiApiClient mClient;
     private Handler handler;
 
-    private RelativeLayout rootview;
-    private RelativeLayout.LayoutParams layoutParams;
     private TextView step;
     private String count;
 
@@ -71,11 +70,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         super.onActivityCreated(savedInstanceState);
         init();
     }
+
     private void init() {
-        exerciseLayout=(LinearLayout) view.findViewById(R.id.exercise);
-        goalsLayout=(LinearLayout) view.findViewById(R.id.goals);
-        historyLayout=(LinearLayout) view.findViewById(R.id.history);
-        deviceLayout=(LinearLayout) view.findViewById(R.id.device);
+        exerciseLayout = (LinearLayout) view.findViewById(R.id.exercise);
+        goalsLayout = (LinearLayout) view.findViewById(R.id.goals);
+        historyLayout = (LinearLayout) view.findViewById(R.id.history);
+        deviceLayout = (LinearLayout) view.findViewById(R.id.device);
 //		settingLayout=(LinearLayout) view.findViewById(R.id.setting);
 
         exerciseLayout.setOnClickListener(this);
@@ -136,12 +136,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             }
         }, 0, 300);
 
-        //运动目标
-        step = (TextView) view.findViewById(R.id.step);
-        SharedPreferences  sp = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-        String numbers = sp.getString("user_mobile", "");
-        step.setText(numbers);
-        step.setOnClickListener(this);
     }
 
     @Override
@@ -149,12 +143,16 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         super.onResume();
         //连接API
         mClient.connect();
+        //运动目标
+        step = (TextView) view.findViewById(R.id.step);
+        SharedPreferences sp = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+        String numbers = sp.getString("user_mobile", "");
+        step.setText(numbers);
     }
 
     @Override
     public void onClick(View v) {
-        switch(v.getId())
-        {
+        switch (v.getId()) {
             case R.id.history:
                 Intent intent = new Intent(getActivity(), Historcal.class);
                 startActivity(intent);
@@ -163,10 +161,12 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 Intent intent1 = new Intent(getActivity(), Exercise.class);
                 startActivity(intent1);
                 break;
-//            case R.id.goals:
+            case R.id.goals:
 //                Intent intent2 = new Intent(getActivity(),Goals.class);
 //                startActivity(intent2);
-//                break;
+                MyDialog myDialog = new MyDialog(getContext(), handler);
+                myDialog.show();
+                break;
             case R.id.device:
                 if (isConnected) {
                     //如果已经和手表连接设备,打开设备信息界面
@@ -174,12 +174,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                     startActivity(intent3);
                 } else {
                     //如果已经和手表连接设备,打开TicWear助手连接设备界面
-                    doStartApplicationWithPackageName("com.mobvoi.companion");
+                    doStartApplicationWithPackageName("");
                 }
-                break;
-            case R.id.step:
-                MyDialog myDialog = new MyDialog(getContext(), handler);
-                myDialog.show();
                 break;
         }
     }
@@ -193,6 +189,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             e.printStackTrace();
         }
         if (packageinfo == null) {
+            Toast.makeText(getContext(), "请先安装TicWear助手", Toast.LENGTH_SHORT).show();
             return;
         }
 

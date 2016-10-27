@@ -241,7 +241,6 @@
                     android:textColor="#ffffff"
                     android:textSize="15dp" />
 
-
                 <TextView
                     android:id="@+id/step"
                     android:layout_width="wrap_content"
@@ -250,6 +249,14 @@
                     android:layout_marginRight="40dp"
                     android:text="1000"
                     android:textColor="#ffffff" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="40dp"
+                    android:src="@drawable/arrow" />
+
             </LinearLayout>
 
            <!--分割线-->
@@ -282,7 +289,6 @@
                     android:textColor="#ffffff"
                     android:textSize="15dp" />
 
-
                 <ImageView
                     android:layout_width="18dp"
                     android:layout_height="15dp"
@@ -303,8 +309,6 @@
 
 
             // 历史记录选项
-
-
             <LinearLayout
                 android:id="@+id/history"
                 android:layout_width="match_parent"
@@ -350,3 +354,5 @@
 
     </ScrollView>
 </LinearLayout>
+
+

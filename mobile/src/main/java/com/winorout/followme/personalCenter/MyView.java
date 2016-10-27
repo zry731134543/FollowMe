@@ -17,13 +17,18 @@ public class MyView extends RelativeLayout {
     private RelativeLayout.LayoutParams layoutParams;
     public static String count;
     ArrayList<String> list;
+    private static boolean isScroll;
 
     public String getCount() {
+        if (!isScroll) {
+            count = "1000";
+        }
         return count;
     }
 
     public MyView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        isScroll = false;
         layoutParams = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         LoopView loopView = new LoopView(getContext());
@@ -43,7 +48,9 @@ public class MyView extends RelativeLayout {
             public void onItemSelect(int item) {
                 Log.d("debug", "Item " + list.get(item));
                 count = "" + list.get(item);
+                isScroll = true;
             }
+
         });
         //设置原始数据
         loopView.setArrayList(list);
