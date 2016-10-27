@@ -114,8 +114,8 @@ public class SettingTime extends Activity implements OnClickListener, OnValueCha
 				int curr_minute=calendar.get(Calendar.MINUTE);
 				int s=calendar.get(Calendar.SECOND);
 				Log.d("GetStepService", "提醒时间"+hour+":"+minute);
-				Intent intent = new Intent(SettingTime.this, AlarmReceiver.class);
-				PendingIntent pi = PendingIntent.getBroadcast(SettingTime.this, 0, intent, 0);
+				Intent intent = new Intent(SettingTime.this, AlarmActivity.class);
+				PendingIntent pi = PendingIntent.getActivity(SettingTime.this, 0, intent, 0);
 				if(hour>=curr_hour){
 					int m=minute-curr_minute;
 					int h=m<0?hour-curr_hour-1:hour-curr_hour;
