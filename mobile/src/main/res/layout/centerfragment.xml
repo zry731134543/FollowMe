@@ -280,9 +280,7 @@
                     android:layout_weight="1"
                     android:text="  锻炼提醒"
                     android:textColor="#ffffff"
-                    android:textSize="15dp"
-
-                    />
+                    android:textSize="15dp" />
 
 
                 <ImageView
