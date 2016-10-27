@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Title</title>
     <style>
          *{
@@ -9,48 +10,70 @@
              padding: 0;
          }
          body{
+
              background:#199ced;
          }
-        .div1{
-            width: 99%;
-            /*padding-bottom: 100px;*/
-        }
-
-        h3{
-            text-align: center;
-            margin-bottom: 25px;
-            font-size: 1.4em;
-            margin-top: 100px;
-        }
+         input{
+            width: 80px;
+             height: 40px;
+             color:#000;
+             background: #ffffff;
+             border-radius: 5px;
+         }
 
          textarea{
-             margin: 0 5%;
-             width: 90%;
-             height: 160px;
+             margin: 5%;
+             width: 89%;
+             height: 220px;
              border: thin solid #000000;
              margin-bottom: 30px;
              font-size: 1.3em;
              outline:none;
              text-indent:20px;
              padding: 10px 0;
+			 margin-top:100px;
          }
 
+
          form{
+
              text-align: center;
+             color:#ff0000;
+
+         }
+
+         .ImgDiv{
+             width: 10px;
+             position: relative;
+             top: -140px;
+             left: 81%;
          }
 
     </style>
 </head>
 <body>
 <div class="div1">
-    <h3>来说两句</h3>
-    <form action="http://www.baidu.com">
-        <textarea name="" id="textarea2" maxlength="200" placeholder="FollowMe随我益动~~"></textarea>
-        <br><input type="submit" value="提交"
-                   style="width: 80px; height: 40px; background: #fff; border-radius: 5px">&nbsp;&nbsp;&nbsp;
-        <input type="reset" vlalue="重置"
-               style="width: 80px; height: 40px; background: #fff; border-radius: 5px">
+
+    <form action="">
+        <textarea name="" id="textarea" maxlength="200" placeholder="发送弹幕~"></textarea>
+        <br><input type="submit" value="提交" onclick="sendToJava('textarea')">
+        &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+        <input type="reset" value="重置">
     </form>
+
+    <div class="ImgDiv">
+        <img id="img" src="voice.png" alt="长按录音">
+    </div>
+
 </div>
+
+
+<script type="text/javascript">
+
+        function sendToJava(id1){
+            var str = "弹幕内容：" + id1;
+            window.control.fromJs(str)
+        }
+</script>
 </body>
 </html>

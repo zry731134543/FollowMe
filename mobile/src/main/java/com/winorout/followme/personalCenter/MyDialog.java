@@ -65,7 +65,7 @@ public class MyDialog extends AlertDialog implements View.OnClickListener {
 
     private void doOk() {
         Message msg = new Message();
-        msg.what = 0x123;
+        msg.what = 0x126;
         msg.obj = myView.getCount();
         mHandler.sendMessage(msg);
         dismiss();

@@ -178,6 +178,7 @@
                     android:textSize="18dp" />
 
                 <TextView
+                    android:id="@+id/andriodVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -211,6 +212,7 @@
                     android:textSize="18dp" />
 
                 <TextView
+                    android:id="@+id/ticWearVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
@@ -257,24 +259,33 @@
                 android:orientation="horizontal">
 
                 <ToggleButton
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="50dp"
+                    android:id="@+id/serchDevice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textOn="停止查找"
-                    android:textOff="查找设备" />
+                    android:layout_marginLeft="36dp"
+                    android:layout_marginTop="18dp"
+                    android:textOff="查找设备"
+                    android:textOn="停止查找" />
 
                 <ToggleButton
+                    android:id="@+id/domSteal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginLeft="60dp"
-                    android:textOn="关闭防盗"
-                    android:textOff="开启防盗" />
+                    android:layout_marginLeft="53dp"
+                    android:layout_marginTop="18dp"
+                    android:textOff="开启防盗"
+                    android:textOn="关闭防盗" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="10dp"
+            android:background="#cccccc" />
 
     </LinearLayout>
 

@@ -58,35 +58,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private RelativeLayout.LayoutParams layoutParams;
     private TextView step;
     private String count;
-    private Handler mhHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0x123) {
-                count = String.valueOf(msg.obj);
-                step.setText(count);
-                SharedPreferences mSharedPreferences = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor = mSharedPreferences.edit();
-                editor.putString("user_mobile", count);
-                editor.commit();
-            }
-        }
-    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.centerfragment, container, false);
-        step = (TextView) view.findViewById(R.id.step);
-        SharedPreferences  sp = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-        String numbers = sp.getString("user_mobile", "");
-        step.setText(numbers);
-        step.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                MyDialog myDialog = new MyDialog(getContext(), mhHandler);
-                myDialog.show();
-            }
-        });
         return view;
     }
 
@@ -106,6 +82,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         goalsLayout.setOnClickListener(this);
         historyLayout.setOnClickListener(this);
         deviceLayout.setOnClickListener(this);
+        deviceLayout.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent intent3 = new Intent(getActivity(), DeviceInfo.class);
+                startActivity(intent3);
+                return true;
+            }
+        });
 //		settingLayout.setOnClickListener(this);
 
         deviceImg = (ImageView) view.findViewById(R.id.deviceImg);
@@ -131,6 +115,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 }
                 if (msg.what == 0x125) {
                 }
+                if (msg.what == 0x126) {
+                    count = String.valueOf(msg.obj);
+                    step.setText(count);
+                    SharedPreferences mSharedPreferences = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+                    SharedPreferences.Editor editor = mSharedPreferences.edit();
+                    editor.putString("user_mobile", count);
+                    editor.commit();
+                }
             }
         };
 
@@ -143,6 +135,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 handler.sendMessage(msg);
             }
         }, 0, 300);
+
+        //运动目标
+        step = (TextView) view.findViewById(R.id.step);
+        SharedPreferences  sp = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
+        String numbers = sp.getString("user_mobile", "");
+        step.setText(numbers);
+        step.setOnClickListener(this);
     }
 
     @Override
@@ -177,6 +176,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                     //如果已经和手表连接设备,打开TicWear助手连接设备界面
                     doStartApplicationWithPackageName("com.mobvoi.companion");
                 }
+                break;
+            case R.id.step:
+                MyDialog myDialog = new MyDialog(getContext(), handler);
+                myDialog.show();
                 break;
         }
     }
