@@ -9,13 +9,10 @@ import com.winorout.followme.R;
 
 public class DeviceInfo extends Activity {
 
-//    private WebView webView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_device_info);
-//        webView = (WebView) findViewById(R.id.webView);
 //        WebSettings webSettings =webView.getSettings();
 //        webSettings.setJavaScriptEnabled(true);  //支持js
     }

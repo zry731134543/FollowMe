@@ -26,35 +26,15 @@ public class BarrageFragment extends Fragment {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
-
         setView();
         setListener();
-
         super.onActivityCreated(savedInstanceState);
     }
 
     private void setListener() {
-        // TODO Auto-generated method stub
-
-        webview.loadUrl("http://172.17.131.37:8080/WebSocketDemo/index.jsp");
-        // webview.loadUrl("http://www.youku.com/");
+        webview.loadUrl("file:///android_asset/barrage.html");
         WebSettings webSettings = webview.getSettings();
         webSettings.setJavaScriptEnabled(true);
-        webSettings.setAllowFileAccess(true);
-        //设置支持缩放
-        webSettings.setBuiltInZoomControls(true);
-        //加载需要显示的网页
-        webSettings.setBlockNetworkImage(false);
-        webSettings.setBlockNetworkLoads(false);
-        webSettings.setDomStorageEnabled(true);
-        webview.setWebViewClient(new WebViewClient() {
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-            }
-        });
-
     }
 
     private void setView() {
