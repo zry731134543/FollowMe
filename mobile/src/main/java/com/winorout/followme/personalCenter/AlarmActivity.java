@@ -18,7 +18,7 @@ public class AlarmActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        alarmMusic = MediaPlayer.create(this, R.raw.alarm);
+        alarmMusic = MediaPlayer.create(this, R.raw.alarmm);
         alarmMusic.setLooping(true);
 
         alarmMusic.start();
