@@ -1,12 +1,9 @@
 package com.winorout.connect;
 
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.mobvoi.android.wearable.MessageEvent;
@@ -15,8 +12,6 @@ import com.winorout.followme.sports.DateTimeData;
 import com.winorout.followme.sports.PedometerDB;
 import com.winorout.tools.Logg;
 import com.winorout.tools.Tools;
-
-import java.text.DateFormat;
 import java.text.DecimalFormat;
 
 

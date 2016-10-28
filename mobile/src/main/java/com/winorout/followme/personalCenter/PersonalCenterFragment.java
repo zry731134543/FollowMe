@@ -16,10 +16,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,6 +28,9 @@ import com.mobvoi.android.wearable.MessageApi;
 import com.mobvoi.android.wearable.MessageEvent;
 import com.mobvoi.android.wearable.Wearable;
 import com.winorout.followme.R;
+import com.winorout.followme.common.bean.BatteryInfo;
+import com.winorout.followme.common.bean.DeviceInfo;
+import com.winorout.followme.common.utils.TransformBytesAndObject;
 
 import java.util.List;
 import java.util.Timer;
@@ -39,7 +40,7 @@ import java.util.TimerTask;
  * Created by Mr-x on 2016/10/03.
  */
 
-public class PersonalCenterFragment extends Fragment implements View.OnClickListener, MessageApi.MessageListener, MobvoiApiClient.ConnectionCallbacks, MobvoiApiClient.OnConnectionFailedListener {
+public class PersonalCenterFragment extends Fragment implements View.OnClickListener, MobvoiApiClient.ConnectionCallbacks, MobvoiApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "qmyan";
     private View view;
@@ -57,6 +58,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
 
     private TextView step;
     private String count;
+
+    private DeviceInfo mDeviceInfo;
+    private BatteryInfo mBatteryInfo;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,7 +89,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         deviceLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                Intent intent3 = new Intent(getActivity(), DeviceInfo.class);
+                Intent intent3 = new Intent(getActivity(), DeviceInfoActivity.class);
                 startActivity(intent3);
                 return true;
             }
@@ -105,15 +109,11 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         handler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
-                if (msg.what == 0x123) {
-                }
                 if (msg.what == 0x124) {
                     //检查设备是否连接
                     checkConnectState();
                     //设置我的设备显示信息
                     initMyDevice();
-                }
-                if (msg.what == 0x125) {
                 }
                 if (msg.what == 0x126) {
                     count = String.valueOf(msg.obj);
@@ -162,15 +162,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 startActivity(intent1);
                 break;
             case R.id.goals:
-//                Intent intent2 = new Intent(getActivity(),Goals.class);
-//                startActivity(intent2);
                 MyDialog myDialog = new MyDialog(getContext(), handler);
                 myDialog.show();
                 break;
             case R.id.device:
                 if (isConnected) {
                     //如果已经和手表连接设备,打开设备信息界面
-                    Intent intent3 = new Intent(getActivity(), DeviceInfo.class);
+                    Intent intent3 = new Intent(getActivity(), DeviceInfoActivity.class);
                     startActivity(intent3);
                 } else {
                     //如果已经和手表连接设备,打开TicWear助手连接设备界面
@@ -248,29 +246,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         );
     }
 
-    //监听手表发过来的信息
-    @Override
-    public void onMessageReceived(MessageEvent messageEvent) {
-        Log.e(TAG, "onMessageReceived: hava new msg");
-        if (messageEvent.getPath().equals("WEAR")) {
-            Message msg = new Message();
-            msg.what = 0x123;
-            msg.obj = new String(messageEvent.getData());
-            handler.sendMessage(msg);
-        }
-        if (messageEvent.getPath().equals("BATTERY_LEVEL")) {
-            Message msg = new Message();
-            msg.what = 0x125;
-            msg.arg1 = Integer.parseInt(new String(messageEvent.getData()));
-            handler.sendMessage(msg);
-        }
-    }
-
     //API连接成功时回调
     @Override
     public void onConnected(Bundle bundle) {
         Log.e(TAG, "onConnected: " + bundle);
-        Wearable.MessageApi.addListener(mClient, this);
     }
 
     //API连接中断时回调

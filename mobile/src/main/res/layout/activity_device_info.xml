@@ -25,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="设备名称"
+            android:text="我的手表"
             android:textColor="#fff"
             android:textSize="23dp" />
 
@@ -39,12 +39,12 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/battery_level"
+            android:id="@+id/batteryLevelImg"
             android:layout_width="100dp"
             android:layout_height="160dp"
             android:layout_gravity="center"
             android:layout_marginLeft="20dp"
-            android:layout_marginRight="60dp"
+            android:layout_marginRight="30dp"
             android:layout_marginTop="3dp"
             android:src="@drawable/battery_level5" />
 
@@ -70,12 +70,12 @@
                     android:textSize="20dp" />
 
                 <TextView
-                    android:id="@+id/dumpEnergy"
+                    android:id="@+id/batteryLevel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
-                    android:text="20%"
+                    android:text="xx%"
                     android:textSize="18dp" />
 
             </LinearLayout>
@@ -90,32 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="电池温度:"
-                    android:textColor="#000000"
-                    android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/batteryTemperature"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="20dp"
-                    android:text="30°c"
-                    android:textSize="18dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="电池状态:"
+                    android:text="使用状态:"
                     android:textColor="#000000"
                     android:textSize="20dp" />
 
@@ -125,7 +100,32 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
-                    android:text="正常"
+                    android:text="xxxx"
+                    android:textSize="18dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="健康状况:"
+                    android:textColor="#000000"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/batteryHealth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
+                    android:text="xxxx"
                     android:textSize="18dp" />
 
             </LinearLayout>
@@ -173,17 +173,17 @@
                     android:layout_marginLeft="38dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="Android  版本"
+                    android:text="Android版本"
                     android:textColor="#fff"
                     android:textSize="18dp" />
 
                 <TextView
-                    android:id="@+id/andriodVersion"
+                    android:id="@+id/androidVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="5.1"
+                    android:text="xxx"
                     android:textColor="#fff"
                     android:textSize="17dp" />
 
@@ -207,17 +207,17 @@
                     android:layout_marginLeft="38dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="10dp"
-                    android:text="TicWear 版本"
+                    android:text="设 备 名 称  "
                     android:textColor="#fff"
                     android:textSize="18dp" />
 
                 <TextView
-                    android:id="@+id/ticWearVersion"
+                    android:id="@+id/deviceName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="tic_4.3.2"
+                    android:text="xxx"
                     android:textColor="#fff"
                     android:textSize="17dp" />
 

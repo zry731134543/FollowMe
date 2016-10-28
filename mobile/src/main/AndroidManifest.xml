@@ -37,15 +37,13 @@
         </activity>
         <activity android:name=".personalCenter.Exercise" >
         </activity>
-        <activity android:name=".personalCenter.Goals" >
-        </activity>
         <activity android:name=".personalCenter.Setting" >
         </activity>
         <activity
             android:name=".personalCenter.SettingTime"
             android:label="SettingTime" >
         </activity>
-        <activity android:name=".personalCenter.DeviceInfo"/>
+        <activity android:name=".personalCenter.DeviceInfoActivity"/>
     </application>
 
 </manifest>
