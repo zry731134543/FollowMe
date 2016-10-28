@@ -22,7 +22,7 @@ public class AlarmActivity extends Activity {
         alarmMusic.setLooping(true);
 
         alarmMusic.start();
-        new AlertDialog.Builder(AlarmActivity.this).setTitle("闹钟")
+        AlertDialog dialog = new AlertDialog.Builder(AlarmActivity.this).setTitle("闹钟")
                 .setMessage("闹钟响了")
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
@@ -31,5 +31,6 @@ public class AlarmActivity extends Activity {
                         AlarmActivity.this.finish();
                     }
                 }).show();
+        dialog.setCancelable(false);
     }
 }
