@@ -122,6 +122,8 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
                     editor.putString("user_mobile", count);
                     editor.commit();
+                    TextView textView = (TextView)getActivity().findViewById(R.id.mygoals);
+                    textView.setText("目标" + count + "步");
                 }
             }
         };
@@ -172,7 +174,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                     startActivity(intent3);
                 } else {
                     //如果已经和手表连接设备,打开TicWear助手连接设备界面
-                    doStartApplicationWithPackageName("");
+                    doStartApplicationWithPackageName("com.mobvoi.companion");
                 }
                 break;
         }

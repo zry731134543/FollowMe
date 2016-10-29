@@ -33,6 +33,9 @@ public class SportsFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sportsfragment, container, false);
+        TextView textView = (TextView)getActivity().findViewById(R.id.mygoals);
+        TextView textView1 = (TextView)view.findViewById(R.id.newgoals);
+        textView1.setText(textView.getText().toString());
         bindView();
         getData();
         registerReceiver();

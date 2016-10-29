@@ -161,8 +161,8 @@ public class CircleBar extends View {
         canvas.drawText(upText, (mColorWheelRectangle.centerX()) - (textPaint1.measureText(upText) / 2),
                 mColorWheelRectangle.centerY() + bounds.height() / 2 - mDistance, textPaint1);
         textPaint1.getTextBounds(downText, 0, downText.length(), bounds);
-        canvas.drawText(downText, (mColorWheelRectangle.centerX()) - (textPaint1.measureText(downText) / 2),
-                mColorWheelRectangle.centerY() + bounds.height() / 2 + mDistance, textPaint1);
+//        canvas.drawText(downText, (mColorWheelRectangle.centerX()) - (textPaint1.measureText(downText) / 2),
+//                mColorWheelRectangle.centerY() + bounds.height() / 2 + mDistance, textPaint1);
     }
 
     // 测量父布局的大小

@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#129CEE" >
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/circle_Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,18 @@
             android:layout_height="240dp"
             android:layout_gravity="center"
             android:clickable="true" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/newgoals"
+            android:layout_marginLeft="84dp"
+            android:layout_marginTop="52dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:text="目标:10000步"/>
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
