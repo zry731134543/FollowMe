@@ -133,22 +133,20 @@ public class DeviceInfoActivity extends Activity {
      * @param batteryLevel
      */
     private void setBatteryLevelImg(int batteryLevel) {
-        switch (batteryLevel % 25) {
-            case 4:
-                batteryLevelImg.setImageResource(R.drawable.battery_level5);
-                break;
-            case 3:
-                batteryLevelImg.setImageResource(R.drawable.battery_level4);
-                break;
-            case 2:
-                batteryLevelImg.setImageResource(R.drawable.battery_level3);
-                break;
-            case 1:
-                batteryLevelImg.setImageResource(R.drawable.battery_level2);
-                break;
-            default:
-                batteryLevelImg.setImageResource(R.drawable.battery_level1);
-                break;
+        if (batteryLevel==100) {
+            batteryLevelImg.setImageResource(R.drawable.battery_level5);
+        }
+        if (76<=batteryLevel&&batteryLevel<100) {
+            batteryLevelImg.setImageResource(R.drawable.battery_level4);
+        }
+        if (51<=batteryLevel&&batteryLevel<76) {
+            batteryLevelImg.setImageResource(R.drawable.battery_level3);
+        }
+        if (21<=batteryLevel&&batteryLevel<51) {
+            batteryLevelImg.setImageResource(R.drawable.battery_level2);
+        }
+        if (0<=batteryLevel&&batteryLevel<21) {
+            batteryLevelImg.setImageResource(R.drawable.battery_level1);
         }
     }
 }
