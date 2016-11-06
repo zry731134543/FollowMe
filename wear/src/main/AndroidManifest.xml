@@ -3,7 +3,14 @@
     package="com.winorout.followme">
 
     <uses-feature android:name="android.hardware.type.watch" />
-
+    <!--语音识别权限-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!--<uses-permission android:name="android.permission.INTERNET" />-->
+    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
     <!--震动权限-->
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -18,6 +25,36 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
+
+        <!-- begin: baidu speech sdk-->
+        <!-- 请填写应用实际的APP_ID -->
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="8851289" />
+        <!-- 请填写应用实际的API_KEY -->
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="LXDNU5aWtPedGvAw2zYkUua9" />
+        <!-- 请填写应用实际的SECRET_KEY -->
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="1a1f803423d7ce055f2ae559c5279425" />
+        <service
+            android:name="com.baidu.speech.VoiceRecognitionService"
+            android:exported="false"></service>
+        <activity
+            android:name="com.baidu.voicerecognition.android.ui.BaiduASRDigitalDialog"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Dialog">
+            <intent-filter>
+                <action android:name="com.baidu.action.RECOGNIZE_SPEECH"></action>
+                <category android:name="android.intent.category.DEFAULT"></category>
+            </intent-filter>
+        </activity>
+        <!-- end : baidu speech sdk-->
+
         <activity
             android:name=".FollowActivity"
             android:label="@string/app_name">
@@ -28,13 +65,14 @@
             </intent-filter>
         </activity>
         <!--数据Activity-->
-        <activity android:name=".SportDataActivity"/>
+        <activity android:name=".SportDataActivity" />
         <!--防盗Activity-->
-        <activity android:name=".DomStealActivity"/>
+        <activity android:name=".DomStealActivity" />
         <!--弹幕Activity-->
-        <activity android:name=".BarrageActivity"/>
-        <service android:name="com.winorout.services.DomStealService"/>
-        <service android:name="com.winorout.connect.WearMessageService"/>
+        <activity android:name=".BarrageActivity" />
+
+        <service android:name="com.winorout.services.DomStealService" />
+        <service android:name="com.winorout.connect.WearMessageService" />
     </application>
 
 </manifest>

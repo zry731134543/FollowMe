@@ -8,20 +8,22 @@
         android:layout_width="match_parent"/>
     <TextView
         android:id="@+id/speak_tip"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="90dp"
         android:layout_centerInParent="true"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:text="@string/app_name"
-        android:gravity="center" />
+        android:textColor="#000"
+        android:gravity="center"
+        android:background="#fff"/>
 
     <Button
         android:id="@+id/test_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/start_voice"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="3dp"
         android:layout_below="@+id/speak_tip"
         android:layout_centerHorizontal="true" />
 
