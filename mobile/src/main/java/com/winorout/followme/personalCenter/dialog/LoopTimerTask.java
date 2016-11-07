@@ -2,13 +2,10 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-// Referenced classes of package com.qingchifan.view:
-//            LoopView
 
 final class LoopTimerTask extends TimerTask {
 

@@ -1,30 +1,20 @@
 package com.winorout.followme;
 
-import android.content.ComponentName;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.wearable.MessageApi;
-import com.google.android.gms.wearable.MessageEvent;
 import com.winorout.connect.MobileMessageService;
-import com.winorout.connect.MobileSynchroService;
 import com.winorout.followme.barrage.BarrageFragment;
 import com.winorout.followme.personalCenter.PersonalCenterFragment;
 import com.winorout.followme.sports.SportsFragment;
-import com.winorout.interfaces.OnMessgaeChange;
-import com.winorout.tools.Logg;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +31,6 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
     private ImageView mtabBarrageImg;
     private ImageView mtabPersonalImg;
     private TextView title;
-    private static final String TAG = "ryzhang";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +40,8 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         initEvent();
         //默认初始化显示第一个Tab标签
         setSelect(0);
-        startService(new Intent(this,MobileMessageService.class));
+        startService(new Intent(this, MobileMessageService.class));
     }
-
 
     private void initEvent() {
         mtabSports.setOnClickListener(this);
@@ -167,6 +155,5 @@ public class FollowActivity extends FragmentActivity implements View.OnClickList
         mtabBarrageImg.setImageResource(R.drawable.img_barrage_nomal);
         mtabPersonalImg.setImageResource(R.drawable.img_personal_nomal);
     }
-
 
 }

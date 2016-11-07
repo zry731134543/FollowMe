@@ -2,10 +2,12 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
 
 import android.os.Handler;
 import android.os.Message;
+
+import com.winorout.followme.personalCenter.dialog.LoopView;
 
 // Referenced classes of package com.qingchifan.view:
 //            LoopView

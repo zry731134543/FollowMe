@@ -106,7 +106,6 @@ public class MobileMessageService extends Service implements MobvoiApiClient.Con
     //监听手表发过来的信息
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
-        new MessageEventFilter(messageEvent,this).sendMessage();
         switch (messageEvent.getPath()) {
             case "BATTERY_INFO":
                 //获取电池信息

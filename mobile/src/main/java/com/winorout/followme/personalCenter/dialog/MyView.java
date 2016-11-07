@@ -1,10 +1,13 @@
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
 
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.winorout.followme.personalCenter.dialog.LoopListener;
+import com.winorout.followme.personalCenter.dialog.LoopView;
 
 import java.util.ArrayList;
 

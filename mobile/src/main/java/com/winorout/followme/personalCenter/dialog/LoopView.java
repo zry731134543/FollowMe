@@ -1,4 +1,4 @@
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -11,13 +11,10 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-
 import java.util.ArrayList;
 import java.util.Timer;
 
-/**
- * Created by Weidongjian on 2015/8/18.
- */
+
 public class LoopView extends View {
 
     Timer mTimer;

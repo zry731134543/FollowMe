@@ -2,7 +2,7 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
 
 
 final class LoopRunnable implements Runnable {

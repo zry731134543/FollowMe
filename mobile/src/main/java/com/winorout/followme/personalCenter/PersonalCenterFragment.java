@@ -25,12 +25,11 @@ import com.mobvoi.android.common.ConnectionResult;
 import com.mobvoi.android.common.api.MobvoiApiClient;
 import com.mobvoi.android.common.api.ResultCallback;
 import com.mobvoi.android.wearable.MessageApi;
-import com.mobvoi.android.wearable.MessageEvent;
 import com.mobvoi.android.wearable.Wearable;
 import com.winorout.followme.R;
 import com.winorout.followme.common.bean.BatteryInfo;
 import com.winorout.followme.common.bean.DeviceInfo;
-import com.winorout.followme.common.utils.TransformBytesAndObject;
+import com.winorout.followme.personalCenter.dialog.MyDialog;
 
 import java.util.List;
 import java.util.Timer;
@@ -56,12 +55,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private MobvoiApiClient mClient;
     private Handler handler;
 
-    private TextView step;
-    private String count;
-
-    private DeviceInfo mDeviceInfo;
-    private BatteryInfo mBatteryInfo;
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,7 +73,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         goalsLayout = (LinearLayout) view.findViewById(R.id.goals);
         historyLayout = (LinearLayout) view.findViewById(R.id.history);
         deviceLayout = (LinearLayout) view.findViewById(R.id.device);
-//		settingLayout=(LinearLayout) view.findViewById(R.id.setting);
 
         exerciseLayout.setOnClickListener(this);
         goalsLayout.setOnClickListener(this);
@@ -94,7 +86,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                 return true;
             }
         });
-//		settingLayout.setOnClickListener(this);
 
         deviceImg = (ImageView) view.findViewById(R.id.deviceImg);
         deviceInfo = (TextView) view.findViewById(R.id.deviceInfo);
@@ -114,16 +105,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                     checkConnectState();
                     //设置我的设备显示信息
                     initMyDevice();
-                }
-                if (msg.what == 0x126) {
-                    count = String.valueOf(msg.obj);
-                    step.setText(count);
-                    SharedPreferences mSharedPreferences = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putString("user_mobile", count);
-                    editor.commit();
-                    TextView textView = (TextView)getActivity().findViewById(R.id.mygoals);
-                    textView.setText("目标" + count + "步");
                 }
             }
         };
@@ -145,11 +126,6 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         super.onResume();
         //连接API
         mClient.connect();
-        //运动目标
-        step = (TextView) view.findViewById(R.id.step);
-        SharedPreferences sp = getActivity().getSharedPreferences("loginUser", Context.MODE_PRIVATE);
-        String numbers = sp.getString("user_mobile", "");
-        step.setText(numbers);
     }
 
     @Override

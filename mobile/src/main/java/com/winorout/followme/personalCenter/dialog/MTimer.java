@@ -2,7 +2,9 @@
 // Jad home page: http://www.geocities.com/kpdus/jad.html
 // Decompiler options: braces fieldsfirst space lnc 
 
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
+
+import com.winorout.followme.personalCenter.dialog.LoopView;
 
 import java.util.Timer;
 import java.util.TimerTask;

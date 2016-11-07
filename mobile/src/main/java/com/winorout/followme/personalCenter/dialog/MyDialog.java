@@ -1,4 +1,4 @@
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.dialog;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.winorout.followme.R;
+import com.winorout.followme.personalCenter.dialog.MyView;
 
 
 /**
