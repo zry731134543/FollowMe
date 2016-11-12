@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+    >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#755d6a"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/center_add"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:background="#705460"
+            android:text="取消"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/setting"
+            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:text="设置提醒"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
+
+
+
+        <Button
+            android:id="@+id/save_add"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+
+            android:background="#705460"
+            android:text="保存"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_explain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp" >
+
+        <LinearLayout
+            android:id="@+id/layout_repeat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/layout_explain"
+            android:orientation="vertical"
+            android:paddingTop="10dp" >
+
+            <Button
+                android:id="@+id/btn_repeat"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:background="#ffffff"
+                android:gravity="bottom"
+                android:text="重复"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/repeat_exaplain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="每天"
+                android:textColor="#cecece"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#D4D4D4" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_ring"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/layout_repeat"
+            android:orientation="vertical"
+            android:paddingTop="10dp" >
+
+            <Button
+                android:id="@+id/btn_ring"
+                android:layout_width="match_parent"
+                android:layout_height="28dp"
+                android:background="#ffffff"
+                android:gravity="bottom"
+                android:text="铃声"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ring1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="默认"
+                android:textColor="#cecece"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="#D4D4D4" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_add_remind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:id="@+id/divider7"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#D4D4D4" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <NumberPicker
+                android:id="@+id/hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+
+            <TextView
+                android:id="@+id/colon"
+                android:layout_width="1px"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/hours"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_toRightOf="@+id/hours"
+                android:background="#D4D4D4"
+                android:textSize="24sp" />
+
+            <NumberPicker
+                android:id="@+id/time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toRightOf="@+id/colon"
+                android:focusable="true"
+                android:focusableInTouchMode="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/divider8"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#D4D4D4" />
+
+    </LinearLayout>
+
+</RelativeLayout>

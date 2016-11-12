@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="55dp"
-    android:background="#ffffff"
-    android:orientation="vertical">
+              android:layout_width="match_parent"
+              android:layout_height="55dp"
+              android:background="#645a65"
+              android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#dcdcdc" />
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#dcdcdc" />-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:layout_marginBottom="2dp"
                 android:clickable="false"
                 android:text="益动"
-                android:textColor="#33475f" />
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -63,7 +63,7 @@
                 android:layout_marginBottom="2dp"
                 android:clickable="false"
                 android:text="弹幕"
-                android:textColor="#33475f" />
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_marginBottom="2dp"
                 android:clickable="false"
                 android:text="益我"
-                android:textColor="#33475f" />
+                android:textColor="#ffffff" />
 
         </LinearLayout>
 

@@ -203,7 +203,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
             deviceInfo.setText("智能手表");
         } else {
             deviceImg.setImageResource(R.drawable.connect);
-            deviceInfo.setText("连接设备");
+            deviceInfo.setText("  连接设备");
         }
     }
 
