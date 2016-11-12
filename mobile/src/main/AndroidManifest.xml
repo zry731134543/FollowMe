@@ -44,6 +44,8 @@
             android:label="SettingTime" >
         </activity>
         <activity android:name=".personalCenter.DeviceInfoActivity"/>
+        <activity android:name=".personalCenter.SetTime"></activity>
+        <activity android:name=".personalCenter.SystemSetting"></activity>
     </application>
 
 </manifest>

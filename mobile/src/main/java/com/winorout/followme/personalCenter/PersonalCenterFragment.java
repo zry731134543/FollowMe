@@ -47,6 +47,7 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private LinearLayout goalsLayout;
     private LinearLayout historyLayout;
     private LinearLayout deviceLayout;
+    private LinearLayout systemsettingLayout;
 
     private ImageView deviceImg;
     private TextView deviceInfo;
@@ -73,7 +74,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         goalsLayout = (LinearLayout) view.findViewById(R.id.goals);
         historyLayout = (LinearLayout) view.findViewById(R.id.history);
         deviceLayout = (LinearLayout) view.findViewById(R.id.device);
+        systemsettingLayout = (LinearLayout)view.findViewById(R.id.sets);
 
+        systemsettingLayout.setOnClickListener(this);
         exerciseLayout.setOnClickListener(this);
         goalsLayout.setOnClickListener(this);
         historyLayout.setOnClickListener(this);
@@ -131,6 +134,10 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.sets:
+                Intent intent2 = new Intent(getActivity(),SystemSetting.class);
+                startActivity(intent2);
+                break;
             case R.id.history:
                 Intent intent = new Intent(getActivity(), Historcal.class);
                 startActivity(intent);
