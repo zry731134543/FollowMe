@@ -28,8 +28,6 @@ public class SystemSetting extends Activity {
             }
         });
 
-
-
     }
 
 }
