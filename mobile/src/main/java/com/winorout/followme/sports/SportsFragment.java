@@ -1,28 +1,22 @@
 package com.winorout.followme.sports;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.winorout.followme.R;
-import com.winorout.tools.Logg;
 
 /**
  * Created by Mr_Yan on 2016/10/3.
  */
 
 public class SportsFragment extends Fragment implements View.OnClickListener{
-    Button button;
+    LinearLayout bodybuilding;
     View view;
     TextView total_kilor;
     TextView total_cal;
@@ -31,8 +25,8 @@ public class SportsFragment extends Fragment implements View.OnClickListener{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.sportsfragment, container, false);
         bindView();
-        button = (Button)view.findViewById(R.id.bodybuilding);
-        button.setOnClickListener(this);
+        bodybuilding = (LinearLayout)view.findViewById(R.id.bodybuilding);
+        bodybuilding.setOnClickListener(this);
         return view;
     }
 

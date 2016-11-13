@@ -7,7 +7,7 @@
                 <item name="colorPrimaryDark">@color/transparent</item>
                 <item name="colorAccent">@color/colorAccent</item>
                 <item name="windowNoTitle">true</item>
-                <item name="android:windowBackground">@android:color/holo_blue_dark</item>
+                <item name="android:windowBackground">@color/wallet_bright_foreground_holo_dark</item>
                 <item name="android:navigationBarColor">@color/wallet_bright_foreground_holo_light</item>
                 <item name="android:statusBarColor">@android:color/transparent</item>
                 <item name="android:colorBackground">@color/wallet_bright_foreground_holo_dark</item>

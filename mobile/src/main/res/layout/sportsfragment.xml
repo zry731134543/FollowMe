@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#129CEE" >
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg">
 
     <FrameLayout
         android:id="@+id/circle_Layout"
@@ -10,99 +10,208 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:orientation="vertical"
-        android:paddingTop="50dip" >
+        android:paddingTop="50dip">
     </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/bodybuilding"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bodybuilding_background"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="去健身"
+            android:textColor="#fff"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="8dp"
+            android:alpha="0.95"
+            android:src="@drawable/bodybuilding_background_arrow"
+            />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="#fff"
         android:baselineAligned="false"
         android:orientation="horizontal"
-        android:paddingBottom="20dip"
-        android:paddingLeft="15dip"
-        android:paddingRight="15dip"
-        android:paddingTop="30dip" >
 
-        <TableLayout
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:paddingLeft="5dip"
-            android:paddingRight="5dip" >
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true">
 
-            <TableRow
-                android:id="@+id/show_data"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
+        <!--<TableLayout-->
+            <!--android:layout_width="0dip"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="3"-->
+            <!--android:paddingLeft="5dip"-->
+            <!--android:paddingRight="5dip"-->
+            <!--&gt;-->
+
+            <!--<TableRow-->
+                <!--android:id="@+id/show_data"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<TextView-->
+                    <!--style="@style/small_text_style"-->
+                    <!--android:layout_weight="1"/>-->
+
+                <!--<TextView-->
+                    <!--style="@style/small_text_style"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="里程"/>-->
+
+                <!--<TextView-->
+                    <!--style="@style/small_text_style"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="热量"-->
+                    <!--android:id="@+id/textView4"/>-->
+            <!--</TableRow>-->
+
+            <!--<TableRow-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+                <!--<TextView-->
+                    <!--style="@style/small_text_style"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="日"/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/total_kile"-->
+                    <!--style="@style/small_text_style"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="0m"-->
+                    <!--android:textColor="#fff"/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/total_cal"-->
+                    <!--style="@style/small_text_style"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="0j"-->
+                    <!--android:textColor="#fff"/>-->
+            <!--</TableRow>-->
+        <!--</TableLayout>-->
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+
+                android:layout_width="0dp"
+
+                android:layout_height="90dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="#6f626c"
+                android:orientation="vertical">
 
                 <TextView
-                    style="@style/small_text_style"
-                    android:layout_weight="0.1" />
+
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:gravity="center"
+
+                    android:text="今日"
+                    android:textColor="#ff9100"
+                    android:textSize="25dp"/>
+
+                <!--<TextView-->
+                    <!--android:id="@+id/textView2"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="65dp"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="8173"-->
+                    <!--android:textColor="#ffffff"-->
+                    <!--android:textSize="25dp"/>-->
+
+            </LinearLayout>
+
+
+            <!--<TextView-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="#ffffff" />-->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="#746872"
+                android:orientation="vertical">
 
                 <TextView
-                    style="@style/small_text_style"
-                    android:layout_weight="1"
-                    android:text="里程" />
-
-                <TextView
-                    style="@style/small_text_style"
-                    android:layout_weight="1"
-                    android:text="热量" />
-
-                <TextView
-                    style="@style/small_text_style"
-                    android:layout_weight="1"
-                    android:text="时间" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:layout_weight="0.1"
-                    style="@style/small_text_style"
-                    android:text="日" />
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center|bottom"
+                    android:text="里程"
+                    android:textColor="#ff9100"
+                    android:textSize="15dp"/>
 
                 <TextView
                     android:id="@+id/total_kile"
-                    style="@style/small_text_style"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
                     android:gravity="center"
                     android:text="0m"
-                    android:textColor="#ff0000" />
+                    android:textColor="#ffffff"
+                    android:textSize="25dp"
+                    />
+            </LinearLayout>
+
+            <!--<TextView-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="#ffffff" />-->
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="#6c626b"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp"
+                    android:gravity="center|bottom"
+                    android:text="热量"
+                    android:textColor="#ff9100"
+                    android:textSize="15dp"/>
 
                 <TextView
                     android:id="@+id/total_cal"
-                    style="@style/small_text_style"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
                     android:gravity="center"
-                    android:text="0j"
-                    android:textColor="#ff0000" />
-
-                <TextView
-                    android:id="@+id/total_time"
-                    style="@style/small_text_style"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="0s"
-                    android:textColor="#ff0000" />
-            </TableRow>
-        </TableLayout>
+                    android:text="0J"
+                    android:textColor="#ffffff"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/bodybuilding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/btn_shape"
-        android:text="去健身" />
 
 </RelativeLayout>
