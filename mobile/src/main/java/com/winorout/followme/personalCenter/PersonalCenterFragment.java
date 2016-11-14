@@ -2,9 +2,7 @@ package com.winorout.followme.personalCenter;
 
 
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
@@ -27,8 +25,7 @@ import com.mobvoi.android.common.api.ResultCallback;
 import com.mobvoi.android.wearable.MessageApi;
 import com.mobvoi.android.wearable.Wearable;
 import com.winorout.followme.R;
-import com.winorout.followme.common.bean.BatteryInfo;
-import com.winorout.followme.common.bean.DeviceInfo;
+import com.winorout.followme.personalCenter.alarmclock.Exercise;
 import com.winorout.followme.personalCenter.dialog.MyDialog;
 
 import java.util.List;

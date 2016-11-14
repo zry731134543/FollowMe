@@ -71,7 +71,7 @@
         </receiver>
         <activity android:name=".personalCenter.Historcal" >
         </activity>
-        <activity android:name=".personalCenter.Exercise" >
+        <activity android:name=".personalCenter.alarmclock.Exercise" >
         </activity>
         <activity android:name=".personalCenter.DeviceInfoActivity"/>
         <activity android:name=".personalCenter.alarmclock.SetTime"></activity>

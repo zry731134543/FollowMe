@@ -1,4 +1,4 @@
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.alarmclock;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.winorout.followme.R;
 
-import com.winorout.followme.personalCenter.alarmclock.AlarmActivity;
 import java.util.Calendar;
 
 public class Exercise extends Activity {
