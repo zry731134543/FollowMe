@@ -15,7 +15,6 @@ import android.widget.Toast;
 import com.winorout.followme.R;
 
 import com.winorout.followme.personalCenter.alarmclock.AlarmActivity;
-import com.winorout.followme.personalCenter.alarmclock.SetTime;
 
 import java.util.Calendar;
 
