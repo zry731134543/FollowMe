@@ -53,7 +53,7 @@
         </activity>
         <!-- end : baidu speech sdk-->
 
-        <activity android:name=".personalCenter.AlarmActivity">
+        <activity android:name=".personalCenter.alarmclock.AlarmActivity">
 
         </activity>
         <activity android:name=".FollowActivity">
@@ -66,15 +66,15 @@
         <service android:name="com.winorout.connect.MobileMessageService"></service>
 
         <receiver
-            android:name=".personalCenter.AlarmReceiver"
+            android:name=".personalCenter.alarmclock.AlarmReceiver"
             android:process=":remote" >
         </receiver>
         <activity android:name=".personalCenter.Historcal" >
         </activity>
-        <activity android:name=".personalCenter.Exercise" >
+        <activity android:name=".personalCenter.alarmclock.Exercise" >
         </activity>
         <activity android:name=".personalCenter.DeviceInfoActivity"/>
-        <activity android:name=".personalCenter.SetTime"></activity>
+        <activity android:name=".personalCenter.alarmclock.SetTime"></activity>
         <activity android:name=".personalCenter.SystemSetting"></activity>
     </application>
 

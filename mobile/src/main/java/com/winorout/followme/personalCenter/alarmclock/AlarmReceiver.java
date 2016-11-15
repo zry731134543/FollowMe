@@ -1,4 +1,4 @@
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.alarmclock;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

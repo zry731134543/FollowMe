@@ -1,4 +1,4 @@
-package com.winorout.followme.personalCenter;
+package com.winorout.followme.personalCenter.alarmclock;
 
 import android.app.Activity;
 import android.os.Bundle;
