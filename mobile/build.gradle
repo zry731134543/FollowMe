@@ -32,4 +32,5 @@ dependencies {
     compile 'com.android.support:multidex:'
     compile 'com.google.code.gson:gson:2.7'
     compile project(':common')
+    compile 'com.android.volley:volley:1.0.0'
 }

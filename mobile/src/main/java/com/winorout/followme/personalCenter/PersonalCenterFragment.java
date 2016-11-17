@@ -45,9 +45,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     private LinearLayout historyLayout;
     private LinearLayout deviceLayout;
     private LinearLayout systemsettingLayout;
-
     private ImageView deviceImg;
     private TextView deviceInfo;
+    private TextView userName;
 
     private boolean isConnected;
     private MobvoiApiClient mClient;
@@ -72,7 +72,9 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
         historyLayout = (LinearLayout) view.findViewById(R.id.history);
         deviceLayout = (LinearLayout) view.findViewById(R.id.device);
         systemsettingLayout = (LinearLayout)view.findViewById(R.id.sets);
+        userName = (TextView) view.findViewById(R.id.userName);
 
+        userName.setOnClickListener(this);
         systemsettingLayout.setOnClickListener(this);
         exerciseLayout.setOnClickListener(this);
         goalsLayout.setOnClickListener(this);
@@ -131,6 +133,14 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.userName:
+                if (userName.getText().toString().equals("未登录")) {
+                    Intent intent4 = new Intent(getContext(), UserLoginActivity.class);
+                    startActivityForResult(intent4, 1);
+                } else{
+                    Toast.makeText(getContext(), userName.getText().toString(), Toast.LENGTH_SHORT).show();
+                }
+                break;
             case R.id.sets:
                 Intent intent2 = new Intent(getActivity(),SystemSetting.class);
                 startActivity(intent2);
@@ -157,6 +167,13 @@ public class PersonalCenterFragment extends Fragment implements View.OnClickList
                     doStartApplicationWithPackageName("com.mobvoi.companion");
                 }
                 break;
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == 1){
+            userName.setText(data.getStringExtra("userName"));
         }
     }
 

@@ -76,6 +76,8 @@
         <activity android:name=".personalCenter.DeviceInfoActivity"/>
         <activity android:name=".personalCenter.alarmclock.SetTime"></activity>
         <activity android:name=".personalCenter.SystemSetting"></activity>
+        <activity android:name=".personalCenter.UserLoginActivity"/>
+        <activity android:name=".personalCenter.UserRegisterActivity"/>
     </application>
 
 </manifest>

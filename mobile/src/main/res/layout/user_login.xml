@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_bar" />
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="35dp"
+        android:src="@drawable/headportrait" />
+
+    <EditText
+        android:id="@+id/login_username"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:hint="用户名"
+        android:textSize="18dp"
+        android:maxLines="1"/>
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="230dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:hint="密码"
+        android:maxLines="1"
+        android:password="true"
+        android:textSize="18dp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/user_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:width="70dp"
+            android:height="40dp"
+            android:background="#FF0000"
+            android:text="登录"
+            android:textColor="#F7FBFD"
+            android:textSize="18dp" />
+
+        <Button
+            android:id="@+id/user_register_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:width="70dp"
+            android:height="40dp"
+            android:background="#0F9000"
+            android:text="注册"
+            android:textColor="#F7FBFD"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+</LinearLayout>
